@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using EveIndustry.Data;
+using EveIndustry.Forms;
+using System.IO;
+
 
 namespace EveIndustry
 {
@@ -10,12 +14,24 @@ namespace EveIndustry
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        public static AppContext dataBase;
+
+
         [STAThread]
         static void Main()
         {
+            Initialize();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new MainForm());
         }
+
+
+        private static void Initialize()
+        {
+            dataBase = new AppContext();
+
+        }
+
     }
 }

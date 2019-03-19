@@ -7,13 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace EveIndustry
+namespace EveIndustry.Forms
 {
-    public partial class Form1 : Form
+    public partial class MainForm : _BaseForm
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
+            InitializeBaseForm();
         }
+
+
     }
 }

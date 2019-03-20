@@ -5,7 +5,7 @@ namespace EveIndustry.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<EveIndustry.Data.AppContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<EveIndustry.Data.DataBaseContext>
     {
         public Configuration()
         {
@@ -13,7 +13,7 @@ namespace EveIndustry.Migrations
             ContextKey = "EveIndustry.Data.AppContext";
         }
 
-        protected override void Seed(EveIndustry.Data.AppContext context)
+        protected override void Seed(EveIndustry.Data.DataBaseContext context)
         {
             //  This method will be called after migrating to the latest version.
 

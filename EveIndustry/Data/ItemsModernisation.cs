@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EveIndustry.Data
 {
-    public class ItemsProduction
+    public class ItemsModernisation
     {
         [Key]
         [Column(Order = 1)]

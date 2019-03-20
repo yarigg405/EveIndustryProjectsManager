@@ -7,14 +7,16 @@ using System.Data.Entity;
 
 namespace EveIndustry.Data
 {
-   public class AppContext:DbContext
+   public class DataBaseContext:DbContext
     {
-        public AppContext()
+        public DataBaseContext()
             : base("DbConnection")
         {
         }
 
         public DbSet<Item> Items { get; set; }
+        public DbSet<Project> Projects { get; set; }
+        
 
     }
 }

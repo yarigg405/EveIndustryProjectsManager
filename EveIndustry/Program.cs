@@ -14,7 +14,7 @@ namespace EveIndustry
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        public static AppContext dataBase;
+        public static DataBaseContext dataBase;
 
 
         [STAThread]
@@ -29,7 +29,7 @@ namespace EveIndustry
 
         private static void Initialize()
         {
-            dataBase = new AppContext();
+            dataBase = new DataBaseContext();
 
         }
 

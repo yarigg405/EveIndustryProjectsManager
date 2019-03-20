@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using EveIndustry.Data;
+using System.Text.RegularExpressions;
 
 
 namespace EveIndustry.Forms
@@ -73,6 +74,49 @@ namespace EveIndustry.Forms
         }
 
 
+        private string[] ParseString(string str)
+        {
+            try
+            {
+                string name = Regex.Match(str, @".*\*").Value.Replace("*", "");
+                string count = Regex.Matches(str, @"\s[0-9]*\s")[0].Value;
+
+                return new string[]
+                     {
+                        name,
+                        count,
+                     };
+            }
+
+            catch
+            {               
+                return new string[]
+                    {
+                        "",
+                        "",
+                    };
+            }
+        }
+
+        private int ParseCount(string str)
+        {
+            while (str.Contains(" "))
+                str = str.Replace(" ", "");
+
+            try
+            {
+                return int.Parse(str);
+            }
+
+            catch
+            {
+                MessageBox.Show("ERROR\n#" + str + "#");
+                return 0;
+            }
+
+        }
+
+
 
         private void projectNameTextBox_Leave(object sender, EventArgs e)
         {
@@ -112,8 +156,34 @@ namespace EveIndustry.Forms
 
         private void modernItemsAddButton_Click(object sender, EventArgs e)
         {
-            string input = Clipboard.GetText();
-            MessageBox.Show(input);
+           // string input = Clipboard.GetText();
+            modernItemsRichTextBox.Text = Clipboard.GetText();
+
+            foreach (string str in modernItemsRichTextBox.Text.Split('\n'))
+            {
+                var output = ParseString(str);
+                var itemStr = output[0];
+                var countStr = output[1];
+
+                if (itemStr != "")
+                {                   
+                    var item = Program.dataBase.Items
+                        .Where(i => i.Name == itemStr).Single();
+                    var count = ParseCount(countStr);
+
+                    var items = new ItemsModernisation
+                    {
+                        Project = project,
+                        Item = item,
+                        Count = count,
+                    };
+
+                    project.ModernisationItems.Add(items);
+                }
+            }
+            modernItemsRichTextBox.Clear();
+
+            RefreshModernisationItems();
         }
 
         private void productItemsAddButton_Click(object sender, EventArgs e)
@@ -141,19 +211,14 @@ namespace EveIndustry.Forms
         {
             if (project.Id < 1)
                 Program.dataBase.Projects.Add(project);
-            else
-            {
-                var currentProject = Program.dataBase.Projects.Where(pr => pr.Id == project.Id).Single();
-                Program.dataBase.Projects.Remove(currentProject);
-                Program.dataBase.Projects.Add(project);
-            }
-
+           
             Program.dataBase.SaveChanges();
             DialogResult = DialogResult.OK;
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
+            Program.dataBase.Entry(project).Reload();
             DialogResult = DialogResult.Cancel;
         }
 

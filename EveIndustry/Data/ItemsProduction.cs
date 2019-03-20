@@ -8,15 +8,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace EveIndustry.Data
 {
     public class ItemsProduction
-    {
-        [Key]
-        [Column(Order = 1)]
+    {        
         public int ProjectId { get; set; }
         public virtual Project Project { get; set; }
 
-        [Key]
-        [Column(Order = 2)]
-        public int ItemId { get; set; }
+        public string ItemId { get; set; }
         public virtual Item Item { get; set; }
 
         public int Count { get; set; }

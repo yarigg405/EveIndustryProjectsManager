@@ -10,5 +10,8 @@ namespace EveIndustry.Data
         public string Id { get; set; }
         public string Name { get; set; }
 
+        public virtual ICollection<ItemsModernisation> ItemsModernisations { get; set; }
+        public virtual ICollection<ItemsProduction> ItemsProductions { get; set; }
+
     }
 }

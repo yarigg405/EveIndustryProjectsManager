@@ -96,6 +96,10 @@
     <Compile Include="Migrations\201903201300382_added projects.Designer.cs">
       <DependentUpon>201903201300382_added projects.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903201947476_Many-to-many relation.cs" />
+    <Compile Include="Migrations\201903201947476_Many-to-many relation.Designer.cs">
+      <DependentUpon>201903201947476_Many-to-many relation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -116,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903201300382_added projects.resx">
       <DependentUpon>201903201300382_added projects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903201947476_Many-to-many relation.resx">
+      <DependentUpon>201903201947476_Many-to-many relation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

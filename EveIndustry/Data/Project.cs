@@ -43,11 +43,6 @@ namespace EveIndustry.Data
         public decimal GetProfit()
         {
             return 0;
-        }
-
-        public Project Clone()
-        {
-            return (Project)MemberwiseClone();
-        }
+        }       
     }
 }

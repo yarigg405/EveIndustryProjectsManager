@@ -10,6 +10,7 @@ using EveIndustry.Data;
 using System.Data.Entity;
 
 
+
 namespace EveIndustry.Forms
 {
     public partial class MainForm : _BaseForm
@@ -63,7 +64,7 @@ namespace EveIndustry.Forms
             var project = Program.dataBase.Projects.Where(pr => pr.Id == id)
                 .Include(pr => pr.ModernisationItems)
                 .Include(pr => pr.ProductionsItems)
-                .Single().Clone();
+                .Single();
 
             ProjectForm form = new ProjectForm(project);
             var result = form.ShowDialog();

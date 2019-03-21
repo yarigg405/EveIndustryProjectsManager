@@ -28,16 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.reloadPricesButton = new System.Windows.Forms.Button();
             this.refreshButton = new System.Windows.Forms.Button();
             this.addNewProjectButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.projectsDataGridView = new System.Windows.Forms.DataGridView();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.profit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.projectsDataGridView)).BeginInit();
@@ -48,12 +51,34 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.reloadPricesButton);
             this.panel1.Controls.Add(this.refreshButton);
             this.panel1.Controls.Add(this.addNewProjectButton);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(546, 78);
             this.panel1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(448, 45);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(93, 28);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Показать цены";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // reloadPricesButton
+            // 
+            this.reloadPricesButton.Location = new System.Drawing.Point(448, 3);
+            this.reloadPricesButton.Name = "reloadPricesButton";
+            this.reloadPricesButton.Size = new System.Drawing.Size(93, 36);
+            this.reloadPricesButton.TabIndex = 2;
+            this.reloadPricesButton.Text = "Обновить цены";
+            this.reloadPricesButton.UseVisualStyleBackColor = true;
+            this.reloadPricesButton.Click += new System.EventHandler(this.reloadPricesButton_Click);
             // 
             // refreshButton
             // 
@@ -105,6 +130,16 @@
             this.projectsDataGridView.TabIndex = 0;
             this.projectsDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.projectsDataGridView_CellContentDoubleClick);
             // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Location = new System.Drawing.Point(12, 553);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(546, 44);
+            this.panel3.TabIndex = 2;
+            // 
             // id
             // 
             this.id.HeaderText = "id";
@@ -119,6 +154,9 @@
             // 
             // profit
             // 
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.profit.DefaultCellStyle = dataGridViewCellStyle1;
             this.profit.HeaderText = "Profit";
             this.profit.Name = "profit";
             // 
@@ -126,16 +164,6 @@
             // 
             this.time.HeaderText = "время выполнения";
             this.time.Name = "time";
-            // 
-            // panel3
-            // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Location = new System.Drawing.Point(12, 553);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(546, 44);
-            this.panel3.TabIndex = 2;
             // 
             // MainForm
             // 
@@ -163,6 +191,8 @@
         private System.Windows.Forms.DataGridView projectsDataGridView;
         private System.Windows.Forms.Button refreshButton;
         private System.Windows.Forms.Button addNewProjectButton;
+        private System.Windows.Forms.Button reloadPricesButton;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn profit;

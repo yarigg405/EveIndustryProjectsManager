@@ -31,14 +31,15 @@ namespace EveIndustry.Forms
         private void Fill(Project proj)
         {
             projectNameTextBox.Text = proj.Name;
-            if (proj.ExitItem != null)
+            if (proj.Item != null)
             {
-                itemNameTextBox.Text = proj.ExitItem.Name;
-                itemIdTextBox.Text = proj.ExitItem.Id;
+                itemNameTextBox.Text = proj.Item.Name;
+                itemIdTextBox.Text = proj.Item.Id;
             }
 
             readyItemsCountUpDown.Value = proj.ItemsCount;
             blueprintsCountUpDown.Value = proj.BlueprintsCount;
+            RefreshReadyItemsCost();
             RefreshModernisationItems();
             RefreshProductionItems();
 
@@ -55,7 +56,11 @@ namespace EveIndustry.Forms
                 row.Cells["count"].Value = item.Count;
             }
 
-            modernSummLabel.Text = $"ИТОГО: {project.GetModernisationCost()}";
+            var summ = project.GetModernisationCost()
+                .ToString("### ### ### ### ### ###.##");
+
+            modernSummLabel.Text = $"ИТОГО: {summ}";
+            RefreshProfit();
 
         }
 
@@ -70,8 +75,30 @@ namespace EveIndustry.Forms
                 row.Cells["count2"].Value = item.Count;
             }
 
-            productSummLabel.Text = $"ИТОГО: {project.GetProdustionCost()}";
+            var summ = project.GetProdustionCost()
+                .ToString("### ### ### ### ### ###.##");
 
+            productSummLabel.Text = $"ИТОГО: {summ}";
+            RefreshProfit();
+
+        }
+
+        private void RefreshReadyItemsCost()
+        {
+            var summ = project.GetReadyItemsCost()
+                .ToString("### ### ### ### ### ###.##");
+
+            readyItemsCostLabel.Text =
+               $"Готовые изделия: {summ}";
+        }
+
+        private void RefreshProfit()
+        {
+            var summ = project.GetProfit()
+                 .ToString("### ### ### ### ### ###.##");
+
+            profitLabel.Text =
+                $"Профит: {summ}";
         }
 
 
@@ -90,7 +117,7 @@ namespace EveIndustry.Forms
             }
 
             catch
-            {               
+            {
                 return new string[]
                     {
                         "",
@@ -132,7 +159,8 @@ namespace EveIndustry.Forms
             else
                 itemIdTextBox.Text = "error";
 
-            project.ExitItem = item;
+            project.Item = item;
+            RefreshReadyItemsCost();
 
         }
 
@@ -144,18 +172,21 @@ namespace EveIndustry.Forms
             else
                 itemNameTextBox.Text = "error";
 
-            project.ExitItem = item;
+            project.Item = item;
+            RefreshReadyItemsCost();
 
         }
 
         private void readyItemsCountUpDown_Leave(object sender, EventArgs e)
         {
             project.ItemsCount = (int)readyItemsCountUpDown.Value;
+            RefreshReadyItemsCost();
         }
 
         private void blueprintsCountUpDown_Leave(object sender, EventArgs e)
         {
             project.BlueprintsCount = (int)blueprintsCountUpDown.Value;
+            RefreshReadyItemsCost();
         }
 
 
@@ -171,7 +202,7 @@ namespace EveIndustry.Forms
                 var countStr = output[1];
 
                 if (itemStr != "")
-                {                   
+                {
                     var item = Program.dataBase.Items
                         .Where(i => i.Name == itemStr).Single();
                     var items = project.ModernisationItems
@@ -195,7 +226,7 @@ namespace EveIndustry.Forms
                         items.Count += count;
                     }
 
-                    
+
                 }
             }
             addingItemsRichTextBox.Clear();
@@ -266,7 +297,7 @@ namespace EveIndustry.Forms
         {
             if (project.Id < 1)
                 Program.dataBase.Projects.Add(project);
-           
+
             Program.dataBase.SaveChanges();
             DialogResult = DialogResult.OK;
         }
@@ -277,6 +308,6 @@ namespace EveIndustry.Forms
             DialogResult = DialogResult.Cancel;
         }
 
-       
+
     }
 }

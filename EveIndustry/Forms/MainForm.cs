@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using EveIndustry.Data;
 using System.Data.Entity;
-
+using EveIndustry.Controllers;
 
 
 namespace EveIndustry.Forms
@@ -70,6 +70,46 @@ namespace EveIndustry.Forms
             var result = form.ShowDialog();
             if (result == DialogResult.OK)
                 RefreshTable();
+        }
+
+        private void reloadPricesButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                PriceLoader loader = new PriceLoader();
+                loader.LoadPrices();
+                RefreshTable();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var Orders = Program.dataBase.Orders
+                .Include(o => o.Item).ToList();
+            StringBuilder sb = new StringBuilder();
+
+            foreach (var order in Orders)
+            {
+                sb.Append(order.Item.Name + "  sellMin ");
+                sb.Append(order.SellMinJita);
+                sb.Append(" sellMax ");
+                sb.Append(order.SellMaxJita);
+                sb.Append(" buyMin ");
+                sb.Append(order.BuyMinJita);
+                sb.Append(" buyMax ");
+                sb.Append(order.BuyMaxJita);
+                sb.Append("\n\n");
+
+            }
+
+            MessageBox.Show(sb.ToString());
+
         }
     }
 }

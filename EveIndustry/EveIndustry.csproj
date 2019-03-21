@@ -47,6 +47,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.11.0.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.11.0\lib\Net40\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -61,10 +64,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\Extensions.cs" />
+    <Compile Include="Controllers\PriceLoader.cs" />
     <Compile Include="Data\DataBaseContext.cs" />
     <Compile Include="Data\Item.cs" />
     <Compile Include="Data\ItemsProduction.cs" />
     <Compile Include="Data\ItemsModernisation.cs" />
+    <Compile Include="Data\Order.cs" />
     <Compile Include="Data\Project.cs" />
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
@@ -92,6 +97,22 @@
     <Compile Include="Migrations\201903210819509_Added count of blueprints.Designer.cs">
       <DependentUpon>201903210819509_Added count of blueprints.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903211006082_Added orders table.cs" />
+    <Compile Include="Migrations\201903211006082_Added orders table.Designer.cs">
+      <DependentUpon>201903211006082_Added orders table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903211006438_Added orders table1.cs" />
+    <Compile Include="Migrations\201903211006438_Added orders table1.Designer.cs">
+      <DependentUpon>201903211006438_Added orders table1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903211148409_Changed Project%27s item.cs" />
+    <Compile Include="Migrations\201903211148409_Changed Project%27s item.Designer.cs">
+      <DependentUpon>201903211148409_Changed Project%27s item.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903211327157_Changed Order-Item relation.cs" />
+    <Compile Include="Migrations\201903211327157_Changed Order-Item relation.Designer.cs">
+      <DependentUpon>201903211327157_Changed Order-Item relation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -109,6 +130,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903210819509_Added count of blueprints.resx">
       <DependentUpon>201903210819509_Added count of blueprints.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903211006082_Added orders table.resx">
+      <DependentUpon>201903211006082_Added orders table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903211006438_Added orders table1.resx">
+      <DependentUpon>201903211006438_Added orders table1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903211148409_Changed Project%27s item.resx">
+      <DependentUpon>201903211148409_Changed Project%27s item.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903211327157_Changed Order-Item relation.resx">
+      <DependentUpon>201903211327157_Changed Order-Item relation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -16,6 +16,8 @@ namespace EveIndustry.Data
 
         public DbSet<Item> Items { get; set; }
         public DbSet<Project> Projects { get; set; }
+        public DbSet<Order> Orders { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -48,6 +50,12 @@ namespace EveIndustry.Data
                 .HasMany(i => i.ItemsProductions)
                 .WithRequired()
                 .HasForeignKey(i => i.ItemId);
+
+
+            modelBuilder.Entity<Item>()
+                .HasOptional(i => i.Order)
+                .WithRequired(or => or.Item);
+
 
         }
 

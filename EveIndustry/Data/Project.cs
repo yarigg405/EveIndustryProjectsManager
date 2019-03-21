@@ -11,7 +11,8 @@ namespace EveIndustry.Data
         public string Name { get; set; }
 
         public long ProductionTime { get; set; }
-        public Item ExitItem { get; set; }
+        public int ItemId { get; set; }
+        public virtual Item Item { get; set; }
         public int BlueprintsCount { get; set; }
         public int ItemsCount { get; set; }
 
@@ -30,22 +31,42 @@ namespace EveIndustry.Data
 
         public decimal GetModernisationCost()
         {
-            return 0;
+            decimal result = 0;
+            foreach (var item in ModernisationItems)
+            {
+                result += (item.Count * item.Item.GetSellPrice());
+            }
+
+            return result;
+
         }
 
         public decimal GetProdustionCost()
         {
-            return 0;
+            decimal result = 0;
+            foreach (var item in ProductionsItems)
+            {
+                result += (item.Count * item.Item.GetSellPrice());
+            }
+
+            return result;
         }
 
         public decimal GetReadyItemsCost()
         {
-            return 0;
+            if (Item == null) return 0;
+            return
+                Item.GetSellPrice()
+                * BlueprintsCount
+                * ItemsCount;
         }
 
         public decimal GetProfit()
         {
-            return 0;
+            return
+                GetReadyItemsCost()
+                - GetProdustionCost()
+                - GetModernisationCost();
         }   
         
 

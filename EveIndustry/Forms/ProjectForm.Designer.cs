@@ -150,7 +150,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(41, 100);
+            this.label7.Location = new System.Drawing.Point(41, 134);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(163, 13);
             this.label7.TabIndex = 16;
@@ -159,7 +159,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(308, 100);
+            this.label8.Location = new System.Drawing.Point(308, 134);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(160, 13);
             this.label8.TabIndex = 17;
@@ -301,8 +301,10 @@
             // 
             // addingItemsRichTextBox
             // 
-            this.addingItemsRichTextBox.Location = new System.Drawing.Point(10, 116);
+            this.addingItemsRichTextBox.Enabled = false;
+            this.addingItemsRichTextBox.Location = new System.Drawing.Point(12, 103);
             this.addingItemsRichTextBox.Name = "addingItemsRichTextBox";
+            this.addingItemsRichTextBox.ReadOnly = true;
             this.addingItemsRichTextBox.Size = new System.Drawing.Size(511, 28);
             this.addingItemsRichTextBox.TabIndex = 33;
             this.addingItemsRichTextBox.Text = "";

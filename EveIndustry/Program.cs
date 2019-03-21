@@ -15,6 +15,7 @@ namespace EveIndustry
         /// The main entry point for the application.
         /// </summary>
         public static DataBaseContext dataBase;
+        public static string regionId = "10000002"; //id региона для загрузки цен (Jita)
 
 
         [STAThread]
@@ -30,6 +31,8 @@ namespace EveIndustry
         private static void Initialize()
         {
             dataBase = new DataBaseContext();
+            
+
            // LoadItemsDataBase();
         }
 

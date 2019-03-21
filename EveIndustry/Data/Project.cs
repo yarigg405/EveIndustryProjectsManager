@@ -12,6 +12,7 @@ namespace EveIndustry.Data
 
         public long ProductionTime { get; set; }
         public Item ExitItem { get; set; }
+        public int BlueprintsCount { get; set; }
         public int ItemsCount { get; set; }
 
         public virtual List<ItemsModernisation> ModernisationItems { get; set; }
@@ -19,6 +20,8 @@ namespace EveIndustry.Data
 
         public Project()
         {
+            BlueprintsCount = 3;
+            ItemsCount = 10;
             ModernisationItems = new List<ItemsModernisation>();
             ProductionsItems = new List<ItemsProduction>();
         }
@@ -43,6 +46,8 @@ namespace EveIndustry.Data
         public decimal GetProfit()
         {
             return 0;
-        }       
+        }   
+        
+
     }
 }

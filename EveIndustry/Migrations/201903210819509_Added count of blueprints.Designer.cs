@@ -7,13 +7,13 @@ namespace EveIndustry.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class Addedcountofblueprints : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Addedcountofblueprints));
         
         string IMigrationMetadata.Id
         {
-            get { return "201903191000492_InitialCreate"; }
+            get { return "201903210819509_Added count of blueprints"; }
         }
         
         string IMigrationMetadata.Source

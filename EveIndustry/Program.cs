@@ -30,7 +30,7 @@ namespace EveIndustry
         private static void Initialize()
         {
             dataBase = new DataBaseContext();
-            
+           // LoadItemsDataBase();
         }
 
         //private static void LoadItemsDataBase()
@@ -55,6 +55,7 @@ namespace EveIndustry
         //        dataBase.SaveChanges();
         //    }
         //}
+
 
     }
 }

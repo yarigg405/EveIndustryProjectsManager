@@ -19,6 +19,8 @@ namespace EveIndustry.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            Database.SetInitializer<DataBaseContext>(null);
+
             modelBuilder.Entity<ItemsModernisation>()
                 .HasKey(i => new { i.ProjectId, i.ItemId });
 

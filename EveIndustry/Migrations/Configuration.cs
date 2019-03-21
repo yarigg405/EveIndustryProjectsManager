@@ -10,7 +10,6 @@ namespace EveIndustry.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "EveIndustry.Data.AppContext";
         }
 
         protected override void Seed(EveIndustry.Data.DataBaseContext context)

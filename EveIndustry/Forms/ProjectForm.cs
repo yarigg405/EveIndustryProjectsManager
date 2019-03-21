@@ -38,6 +38,7 @@ namespace EveIndustry.Forms
             }
 
             readyItemsCountUpDown.Value = proj.ItemsCount;
+            blueprintsCountUpDown.Value = proj.BlueprintsCount;
             RefreshModernisationItems();
             RefreshProductionItems();
 
@@ -65,8 +66,8 @@ namespace EveIndustry.Forms
             {
                 var num = productMaterialsDataGridView.Rows.Add();
                 var row = productMaterialsDataGridView.Rows[num];
-                row.Cells["ItemName"].Value = item.Item.Name;
-                row.Cells["count"].Value = item.Count;
+                row.Cells["itemName2"].Value = item.Item.Name;
+                row.Cells["count2"].Value = item.Count;
             }
 
             productSummLabel.Text = $"ИТОГО: {project.GetProdustionCost()}";
@@ -152,14 +153,18 @@ namespace EveIndustry.Forms
             project.ItemsCount = (int)readyItemsCountUpDown.Value;
         }
 
+        private void blueprintsCountUpDown_Leave(object sender, EventArgs e)
+        {
+            project.BlueprintsCount = (int)blueprintsCountUpDown.Value;
+        }
+
 
 
         private void modernItemsAddButton_Click(object sender, EventArgs e)
         {
-           // string input = Clipboard.GetText();
-            modernItemsRichTextBox.Text = Clipboard.GetText();
+            addingItemsRichTextBox.Text = Clipboard.GetText();
 
-            foreach (string str in modernItemsRichTextBox.Text.Split('\n'))
+            foreach (string str in addingItemsRichTextBox.Text.Split('\n'))
             {
                 var output = ParseString(str);
                 var itemStr = output[0];
@@ -169,27 +174,77 @@ namespace EveIndustry.Forms
                 {                   
                     var item = Program.dataBase.Items
                         .Where(i => i.Name == itemStr).Single();
+                    var items = project.ModernisationItems
+                        .Where(i => i.Item == item).SingleOrDefault();
                     var count = ParseCount(countStr);
 
-                    var items = new ItemsModernisation
-                    {
-                        Project = project,
-                        Item = item,
-                        Count = count,
-                    };
 
-                    project.ModernisationItems.Add(items);
+                    if (items == null)
+                    {
+                        items = new ItemsModernisation
+                        {
+                            Project = project,
+                            Item = item,
+                            Count = count,
+                        };
+                        project.ModernisationItems.Add(items);
+                    }
+
+                    else
+                    {
+                        items.Count += count;
+                    }
+
+                    
                 }
             }
-            modernItemsRichTextBox.Clear();
+            addingItemsRichTextBox.Clear();
 
             RefreshModernisationItems();
         }
 
         private void productItemsAddButton_Click(object sender, EventArgs e)
         {
-            string input = Clipboard.GetText();
-            MessageBox.Show(input);
+            addingItemsRichTextBox.Text = Clipboard.GetText();
+
+            foreach (string str in addingItemsRichTextBox.Text.Split('\n'))
+            {
+                var output = ParseString(str);
+                var itemStr = output[0];
+                var countStr = output[1];
+
+                if (itemStr != "")
+                {
+                    var item = Program.dataBase.Items
+                        .Where(i => i.Name == itemStr).Single();
+                    var items = project.ProductionsItems
+                        .Where(i => i.Item == item).SingleOrDefault();
+                    var count = ParseCount(countStr)
+                        * project.BlueprintsCount;
+
+
+                    if (items == null)
+                    {
+                        items = new ItemsProduction
+                        {
+                            Project = project,
+                            Item = item,
+                            Count = count,
+                        };
+                        project.ProductionsItems.Add(items);
+                    }
+
+                    else
+                    {
+                        items.Count += count;
+                    }
+
+
+                }
+            }
+            addingItemsRichTextBox.Clear();
+
+            RefreshProductionItems();
         }
 
         private void modernItemsClrButton_Click(object sender, EventArgs e)
@@ -223,6 +278,5 @@ namespace EveIndustry.Forms
         }
 
        
-
     }
 }

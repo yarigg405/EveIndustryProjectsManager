@@ -84,21 +84,13 @@
     <Compile Include="Forms\_BaseForm.Designer.cs">
       <DependentUpon>_BaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903191000492_InitialCreate.cs" />
-    <Compile Include="Migrations\201903191000492_InitialCreate.Designer.cs">
-      <DependentUpon>201903191000492_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201903210623283_Initial.cs" />
+    <Compile Include="Migrations\201903210623283_Initial.Designer.cs">
+      <DependentUpon>201903210623283_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903191431377_Added Items Lists.cs" />
-    <Compile Include="Migrations\201903191431377_Added Items Lists.Designer.cs">
-      <DependentUpon>201903191431377_Added Items Lists.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903201300382_added projects.cs" />
-    <Compile Include="Migrations\201903201300382_added projects.Designer.cs">
-      <DependentUpon>201903201300382_added projects.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903201947476_Many-to-many relation.cs" />
-    <Compile Include="Migrations\201903201947476_Many-to-many relation.Designer.cs">
-      <DependentUpon>201903201947476_Many-to-many relation.cs</DependentUpon>
+    <Compile Include="Migrations\201903210819509_Added count of blueprints.cs" />
+    <Compile Include="Migrations\201903210819509_Added count of blueprints.Designer.cs">
+      <DependentUpon>201903210819509_Added count of blueprints.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
@@ -112,17 +104,11 @@
     <EmbeddedResource Include="Forms\_BaseForm.resx">
       <DependentUpon>_BaseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903191000492_InitialCreate.resx">
-      <DependentUpon>201903191000492_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903210623283_Initial.resx">
+      <DependentUpon>201903210623283_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903191431377_Added Items Lists.resx">
-      <DependentUpon>201903191431377_Added Items Lists.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903201300382_added projects.resx">
-      <DependentUpon>201903201300382_added projects.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903201947476_Many-to-many relation.resx">
-      <DependentUpon>201903201947476_Many-to-many relation.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903210819509_Added count of blueprints.resx">
+      <DependentUpon>201903210819509_Added count of blueprints.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

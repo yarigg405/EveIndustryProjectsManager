@@ -7,13 +7,13 @@ namespace EveIndustry.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class addedprojects : IMigrationMetadata
+    public sealed partial class Initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addedprojects));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201903201300382_added projects"; }
+            get { return "201903210623283_Initial"; }
         }
         
         string IMigrationMetadata.Source

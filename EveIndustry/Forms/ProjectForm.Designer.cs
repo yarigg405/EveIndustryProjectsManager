@@ -36,8 +36,8 @@
             this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.count = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productMaterialsDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemName2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.count2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.modernItemsAddButton = new System.Windows.Forms.Button();
@@ -54,16 +54,18 @@
             this.label4 = new System.Windows.Forms.Label();
             this.readyItemsCostLabel = new System.Windows.Forms.Label();
             this.profitLabel = new System.Windows.Forms.Label();
-            this.modernItemsRichTextBox = new System.Windows.Forms.RichTextBox();
-            this.productItemsRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.addingItemsRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.blueprintsCountUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.readyItemsCountUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modernMaterialsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productMaterialsDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.blueprintsCountUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // projectNameTextBox
             // 
-            this.projectNameTextBox.Location = new System.Drawing.Point(12, 29);
+            this.projectNameTextBox.Location = new System.Drawing.Point(12, 25);
             this.projectNameTextBox.Name = "projectNameTextBox";
             this.projectNameTextBox.Size = new System.Drawing.Size(316, 20);
             this.projectNameTextBox.TabIndex = 0;
@@ -81,27 +83,29 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(328, 61);
+            this.label3.Location = new System.Drawing.Point(379, 48);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(155, 13);
+            this.label3.Size = new System.Drawing.Size(148, 13);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Количество готовых изделий";
+            this.label3.Text = "Готовых изделий на чертёж";
             // 
             // readyItemsCountUpDown
             // 
-            this.readyItemsCountUpDown.Location = new System.Drawing.Point(331, 77);
+            this.readyItemsCountUpDown.Location = new System.Drawing.Point(439, 64);
             this.readyItemsCountUpDown.Name = "readyItemsCountUpDown";
-            this.readyItemsCountUpDown.Size = new System.Drawing.Size(113, 20);
+            this.readyItemsCountUpDown.Size = new System.Drawing.Size(88, 20);
             this.readyItemsCountUpDown.TabIndex = 7;
             this.readyItemsCountUpDown.Leave += new System.EventHandler(this.readyItemsCountUpDown_Leave);
             // 
             // modernMaterialsDataGridView
             // 
+            this.modernMaterialsDataGridView.AllowUserToAddRows = false;
+            this.modernMaterialsDataGridView.AllowUserToDeleteRows = false;
             this.modernMaterialsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.modernMaterialsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ItemName,
             this.count});
-            this.modernMaterialsDataGridView.Location = new System.Drawing.Point(12, 206);
+            this.modernMaterialsDataGridView.Location = new System.Drawing.Point(12, 190);
             this.modernMaterialsDataGridView.Name = "modernMaterialsDataGridView";
             this.modernMaterialsDataGridView.Size = new System.Drawing.Size(250, 198);
             this.modernMaterialsDataGridView.TabIndex = 14;
@@ -120,31 +124,33 @@
             // 
             // productMaterialsDataGridView
             // 
+            this.productMaterialsDataGridView.AllowUserToAddRows = false;
+            this.productMaterialsDataGridView.AllowUserToDeleteRows = false;
             this.productMaterialsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.productMaterialsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2});
-            this.productMaterialsDataGridView.Location = new System.Drawing.Point(276, 206);
+            this.itemName2,
+            this.count2});
+            this.productMaterialsDataGridView.Location = new System.Drawing.Point(276, 190);
             this.productMaterialsDataGridView.Name = "productMaterialsDataGridView";
             this.productMaterialsDataGridView.Size = new System.Drawing.Size(250, 198);
             this.productMaterialsDataGridView.TabIndex = 15;
             // 
-            // dataGridViewTextBoxColumn1
+            // itemName2
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Наименование";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 150;
+            this.itemName2.HeaderText = "Наименование";
+            this.itemName2.Name = "itemName2";
+            this.itemName2.Width = 150;
             // 
-            // dataGridViewTextBoxColumn2
+            // count2
             // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Количество";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 55;
+            this.count2.HeaderText = "Количество";
+            this.count2.Name = "count2";
+            this.count2.Width = 55;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(46, 116);
+            this.label7.Location = new System.Drawing.Point(41, 100);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(163, 13);
             this.label7.TabIndex = 16;
@@ -153,7 +159,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(313, 116);
+            this.label8.Location = new System.Drawing.Point(308, 100);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(160, 13);
             this.label8.TabIndex = 17;
@@ -161,7 +167,7 @@
             // 
             // modernItemsAddButton
             // 
-            this.modernItemsAddButton.Location = new System.Drawing.Point(12, 166);
+            this.modernItemsAddButton.Location = new System.Drawing.Point(12, 150);
             this.modernItemsAddButton.Name = "modernItemsAddButton";
             this.modernItemsAddButton.Size = new System.Drawing.Size(192, 34);
             this.modernItemsAddButton.TabIndex = 19;
@@ -171,7 +177,7 @@
             // 
             // productItemsAddButton
             // 
-            this.productItemsAddButton.Location = new System.Drawing.Point(276, 166);
+            this.productItemsAddButton.Location = new System.Drawing.Point(276, 150);
             this.productItemsAddButton.Name = "productItemsAddButton";
             this.productItemsAddButton.Size = new System.Drawing.Size(192, 34);
             this.productItemsAddButton.TabIndex = 20;
@@ -183,7 +189,7 @@
             // 
             this.modernSummLabel.AutoSize = true;
             this.modernSummLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.modernSummLabel.Location = new System.Drawing.Point(9, 407);
+            this.modernSummLabel.Location = new System.Drawing.Point(9, 391);
             this.modernSummLabel.Name = "modernSummLabel";
             this.modernSummLabel.Size = new System.Drawing.Size(65, 17);
             this.modernSummLabel.TabIndex = 21;
@@ -193,7 +199,7 @@
             // 
             this.productSummLabel.AutoSize = true;
             this.productSummLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.productSummLabel.Location = new System.Drawing.Point(273, 407);
+            this.productSummLabel.Location = new System.Drawing.Point(273, 391);
             this.productSummLabel.Name = "productSummLabel";
             this.productSummLabel.Size = new System.Drawing.Size(65, 17);
             this.productSummLabel.TabIndex = 22;
@@ -201,7 +207,7 @@
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(162, 473);
+            this.okButton.Location = new System.Drawing.Point(162, 452);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(100, 35);
             this.okButton.TabIndex = 23;
@@ -211,7 +217,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(276, 473);
+            this.cancelButton.Location = new System.Drawing.Point(276, 452);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(100, 35);
             this.cancelButton.TabIndex = 24;
@@ -221,7 +227,7 @@
             // 
             // modernItemsClrButton
             // 
-            this.modernItemsClrButton.Location = new System.Drawing.Point(210, 166);
+            this.modernItemsClrButton.Location = new System.Drawing.Point(210, 150);
             this.modernItemsClrButton.Name = "modernItemsClrButton";
             this.modernItemsClrButton.Size = new System.Drawing.Size(52, 34);
             this.modernItemsClrButton.TabIndex = 25;
@@ -231,7 +237,7 @@
             // 
             // productItemsClrButton
             // 
-            this.productItemsClrButton.Location = new System.Drawing.Point(474, 166);
+            this.productItemsClrButton.Location = new System.Drawing.Point(474, 150);
             this.productItemsClrButton.Name = "productItemsClrButton";
             this.productItemsClrButton.Size = new System.Drawing.Size(52, 34);
             this.productItemsClrButton.TabIndex = 26;
@@ -241,7 +247,7 @@
             // 
             // itemIdTextBox
             // 
-            this.itemIdTextBox.Location = new System.Drawing.Point(225, 77);
+            this.itemIdTextBox.Location = new System.Drawing.Point(228, 64);
             this.itemIdTextBox.Name = "itemIdTextBox";
             this.itemIdTextBox.Size = new System.Drawing.Size(100, 20);
             this.itemIdTextBox.TabIndex = 27;
@@ -249,7 +255,7 @@
             // 
             // itemNameTextBox
             // 
-            this.itemNameTextBox.Location = new System.Drawing.Point(9, 77);
+            this.itemNameTextBox.Location = new System.Drawing.Point(12, 64);
             this.itemNameTextBox.Name = "itemNameTextBox";
             this.itemNameTextBox.Size = new System.Drawing.Size(210, 20);
             this.itemNameTextBox.TabIndex = 28;
@@ -258,7 +264,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 61);
+            this.label2.Location = new System.Drawing.Point(12, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(109, 13);
             this.label2.TabIndex = 29;
@@ -267,7 +273,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(222, 61);
+            this.label4.Location = new System.Drawing.Point(225, 48);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(18, 13);
             this.label4.TabIndex = 30;
@@ -277,7 +283,7 @@
             // 
             this.readyItemsCostLabel.AutoSize = true;
             this.readyItemsCostLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.readyItemsCostLabel.Location = new System.Drawing.Point(9, 434);
+            this.readyItemsCostLabel.Location = new System.Drawing.Point(9, 418);
             this.readyItemsCostLabel.Name = "readyItemsCostLabel";
             this.readyItemsCostLabel.Size = new System.Drawing.Size(131, 17);
             this.readyItemsCostLabel.TabIndex = 31;
@@ -287,35 +293,45 @@
             // 
             this.profitLabel.AutoSize = true;
             this.profitLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.profitLabel.Location = new System.Drawing.Point(273, 434);
+            this.profitLabel.Location = new System.Drawing.Point(273, 418);
             this.profitLabel.Name = "profitLabel";
             this.profitLabel.Size = new System.Drawing.Size(68, 17);
             this.profitLabel.TabIndex = 32;
             this.profitLabel.Text = "Профит: ";
             // 
-            // modernItemsRichTextBox
+            // addingItemsRichTextBox
             // 
-            this.modernItemsRichTextBox.Location = new System.Drawing.Point(15, 132);
-            this.modernItemsRichTextBox.Name = "modernItemsRichTextBox";
-            this.modernItemsRichTextBox.Size = new System.Drawing.Size(247, 28);
-            this.modernItemsRichTextBox.TabIndex = 33;
-            this.modernItemsRichTextBox.Text = "";
+            this.addingItemsRichTextBox.Location = new System.Drawing.Point(10, 116);
+            this.addingItemsRichTextBox.Name = "addingItemsRichTextBox";
+            this.addingItemsRichTextBox.Size = new System.Drawing.Size(511, 28);
+            this.addingItemsRichTextBox.TabIndex = 33;
+            this.addingItemsRichTextBox.Text = "";
             // 
-            // productItemsRichTextBox
+            // blueprintsCountUpDown
             // 
-            this.productItemsRichTextBox.Location = new System.Drawing.Point(276, 132);
-            this.productItemsRichTextBox.Name = "productItemsRichTextBox";
-            this.productItemsRichTextBox.Size = new System.Drawing.Size(247, 28);
-            this.productItemsRichTextBox.TabIndex = 34;
-            this.productItemsRichTextBox.Text = "";
+            this.blueprintsCountUpDown.Location = new System.Drawing.Point(439, 25);
+            this.blueprintsCountUpDown.Name = "blueprintsCountUpDown";
+            this.blueprintsCountUpDown.Size = new System.Drawing.Size(87, 20);
+            this.blueprintsCountUpDown.TabIndex = 34;
+            this.blueprintsCountUpDown.Leave += new System.EventHandler(this.blueprintsCountUpDown_Leave);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(410, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(117, 13);
+            this.label5.TabIndex = 35;
+            this.label5.Text = "Количество чертежей";
             // 
             // ProjectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(538, 511);
-            this.Controls.Add(this.productItemsRichTextBox);
-            this.Controls.Add(this.modernItemsRichTextBox);
+            this.ClientSize = new System.Drawing.Size(538, 494);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.blueprintsCountUpDown);
+            this.Controls.Add(this.addingItemsRichTextBox);
             this.Controls.Add(this.profitLabel);
             this.Controls.Add(this.readyItemsCostLabel);
             this.Controls.Add(this.label4);
@@ -345,6 +361,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.readyItemsCountUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.modernMaterialsDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productMaterialsDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.blueprintsCountUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -360,8 +377,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn count;
         private System.Windows.Forms.DataGridView productMaterialsDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button modernItemsAddButton;
@@ -378,7 +393,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label readyItemsCostLabel;
         private System.Windows.Forms.Label profitLabel;
-        private System.Windows.Forms.RichTextBox modernItemsRichTextBox;
-        private System.Windows.Forms.RichTextBox productItemsRichTextBox;
+        private System.Windows.Forms.RichTextBox addingItemsRichTextBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemName2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn count2;
+        private System.Windows.Forms.NumericUpDown blueprintsCountUpDown;
+        private System.Windows.Forms.Label label5;
     }
 }

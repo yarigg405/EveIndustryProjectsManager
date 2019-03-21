@@ -83,6 +83,12 @@
     <Compile Include="Forms\ProjectForm.Designer.cs">
       <DependentUpon>ProjectForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PurchasesListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PurchasesListForm.Designer.cs">
+      <DependentUpon>PurchasesListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\_BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ProjectForm.resx">
       <DependentUpon>ProjectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PurchasesListForm.resx">
+      <DependentUpon>PurchasesListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\_BaseForm.resx">
       <DependentUpon>_BaseForm.cs</DependentUpon>

@@ -38,12 +38,15 @@
             this.projectsDataGridView = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isChecked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.itemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.profit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addInPurchasesListButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.projectsDataGridView)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -57,7 +60,7 @@
             this.panel1.Controls.Add(this.addNewProjectButton);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(546, 78);
+            this.panel1.Size = new System.Drawing.Size(542, 78);
             this.panel1.TabIndex = 0;
             // 
             // button1
@@ -109,16 +112,16 @@
             this.panel2.Controls.Add(this.projectsDataGridView);
             this.panel2.Location = new System.Drawing.Point(12, 96);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(546, 451);
+            this.panel2.Size = new System.Drawing.Size(542, 451);
             this.panel2.TabIndex = 1;
             // 
             // projectsDataGridView
             // 
-            this.projectsDataGridView.AllowUserToAddRows = false;
             this.projectsDataGridView.AllowUserToDeleteRows = false;
             this.projectsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.projectsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
+            this.isChecked,
             this.itemName,
             this.profit,
             this.time});
@@ -126,7 +129,7 @@
             this.projectsDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.projectsDataGridView.Location = new System.Drawing.Point(0, 0);
             this.projectsDataGridView.Name = "projectsDataGridView";
-            this.projectsDataGridView.Size = new System.Drawing.Size(542, 447);
+            this.projectsDataGridView.Size = new System.Drawing.Size(538, 447);
             this.projectsDataGridView.TabIndex = 0;
             this.projectsDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.projectsDataGridView_CellContentDoubleClick);
             // 
@@ -135,9 +138,10 @@
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.addInPurchasesListButton);
             this.panel3.Location = new System.Drawing.Point(12, 553);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(546, 44);
+            this.panel3.Size = new System.Drawing.Size(542, 44);
             this.panel3.TabIndex = 2;
             // 
             // id
@@ -145,6 +149,12 @@
             this.id.HeaderText = "id";
             this.id.Name = "id";
             this.id.Visible = false;
+            // 
+            // isChecked
+            // 
+            this.isChecked.HeaderText = "";
+            this.isChecked.Name = "isChecked";
+            this.isChecked.Width = 20;
             // 
             // itemName
             // 
@@ -164,12 +174,22 @@
             // 
             this.time.HeaderText = "время выполнения";
             this.time.Name = "time";
+            this.time.Width = 75;
+            // 
+            // addInPurchasesListButton
+            // 
+            this.addInPurchasesListButton.Location = new System.Drawing.Point(362, 3);
+            this.addInPurchasesListButton.Name = "addInPurchasesListButton";
+            this.addInPurchasesListButton.Size = new System.Drawing.Size(175, 36);
+            this.addInPurchasesListButton.TabIndex = 0;
+            this.addInPurchasesListButton.Text = "В список покупок    =>";
+            this.addInPurchasesListButton.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(570, 609);
+            this.ClientSize = new System.Drawing.Size(566, 609);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -179,6 +199,7 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.projectsDataGridView)).EndInit();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -194,8 +215,10 @@
         private System.Windows.Forms.Button reloadPricesButton;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn isChecked;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn profit;
         private System.Windows.Forms.DataGridViewTextBoxColumn time;
+        private System.Windows.Forms.Button addInPurchasesListButton;
     }
 }

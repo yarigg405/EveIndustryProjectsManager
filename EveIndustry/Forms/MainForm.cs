@@ -34,6 +34,7 @@ namespace EveIndustry.Forms
                 var row = projectsDataGridView.Rows[num];
 
                 row.Cells["id"].Value = proj.Id;
+                row.Cells["isChecked"].Value = false;
                 row.Cells["itemName"].Value = proj.Name;
                 row.Cells["Profit"].Value = proj.GetProfit();
 

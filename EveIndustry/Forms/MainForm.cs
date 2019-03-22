@@ -15,6 +15,8 @@ namespace EveIndustry.Forms
 {
     public partial class MainForm : _BaseForm
     {
+        private List<Project> projectsList = new List<Project>();
+
         public MainForm()
         {
             InitializeComponent();
@@ -41,6 +43,36 @@ namespace EveIndustry.Forms
             }
 
         }
+
+        private void RefreshProjectsList()
+        {
+            projectsListDataGridView.Rows.Clear();
+            decimal fullCost = 0;
+            decimal fullProfit = 0;
+
+
+            for (int i = 0; i < projectsList.Count; i++)
+            {
+                var proj = projectsList[i];
+                var num = projectsListDataGridView.Rows.Add();
+                var row = projectsListDataGridView.Rows[num];
+
+                row.Cells["num"].Value = i;
+                row.Cells["projectChecked"].Value = false;
+                row.Cells["ProjectName"].Value = proj.Name;
+                row.Cells["ProjectCost"].Value = proj.GetModernisationCost() + proj.GetProdustionCost();
+                row.Cells["ProjectProfit"].Value = proj.GetProfit();
+
+                fullCost += proj.GetModernisationCost() + proj.GetProdustionCost();
+                fullProfit += proj.GetProfit();
+            }
+
+            fullCostLabel.Text = "Общая стоимость: " + fullCost;
+            fullProfitLabel.Text = "Общий профит: " + fullProfit;
+           
+        }
+
+
 
         private void addNewProjectButton_Click(object sender, EventArgs e)
         {
@@ -80,6 +112,7 @@ namespace EveIndustry.Forms
                 PriceLoader loader = new PriceLoader();
                 loader.LoadPrices();
                 RefreshTable();
+                RefreshProjectsList();
             }
 
             catch (Exception ex)
@@ -110,6 +143,74 @@ namespace EveIndustry.Forms
             }
 
             MessageBox.Show(sb.ToString());
+
+        }
+
+
+
+
+
+        private void addInProjectListButton_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in projectsDataGridView.Rows)
+            {
+                if ((bool)row.Cells["isChecked"].Value == true)
+                {
+                    var id = (int)row.Cells["id"].Value;
+
+                    var proj = Program.dataBase.Projects
+                        .Where(p => p.Id == id).FirstOrDefault();
+
+                    projectsList.Add(proj);
+                }
+
+            }
+            RefreshProjectsList();
+
+        }
+
+        private void removeFromProjectsListButton_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in projectsListDataGridView.Rows)
+            {
+                if ((bool)row.Cells["projectChecked"].Value == true)
+                {
+                    projectsList.RemoveAt((int)row.Cells["num"].Value);
+                }
+            }
+            RefreshProjectsList();
+
+        }
+
+        private void clearProjectsListButton_Click(object sender, EventArgs e)
+        {
+            projectsList.Clear();
+            RefreshProjectsList();
+        }
+
+        private void projectsDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (projectsDataGridView.CurrentCell.GetType() == typeof(DataGridViewCheckBoxCell))
+            {
+                projectsDataGridView.CurrentCell.Value = true;
+            }
+
+
+        }
+
+        private void projectsListDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (projectsListDataGridView.CurrentCell.GetType() == typeof(DataGridViewCheckBoxCell))
+            {
+                projectsListDataGridView.CurrentCell.Value = true;
+            }
+        }
+
+        private void goToPurchasesListButton_Click(object sender, EventArgs e)
+        {
+            PurchasesListForm form = new PurchasesListForm(projectsList);
+            var result = form.ShowDialog();
 
         }
     }

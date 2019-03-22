@@ -19,6 +19,7 @@ namespace EveIndustry.Forms
         protected void InitializeBaseForm()
         {
             Icon = base.Icon;
+            StartPosition = FormStartPosition.CenterParent;
         }
 
     }

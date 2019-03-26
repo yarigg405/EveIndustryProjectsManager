@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using EveIndustry.Data;
 using System.Text.RegularExpressions;
+using EveIndustry.Controllers;
 
 
 namespace EveIndustry.Forms
@@ -54,10 +55,11 @@ namespace EveIndustry.Forms
                 var row = modernMaterialsDataGridView.Rows[num];
                 row.Cells["ItemName"].Value = item.Item.Name;
                 row.Cells["count"].Value = item.Count;
+                row.Cells["price"].Value = item.Item.GetSellPrice();
+                row.Cells["summ"].Value = item.Count * item.Item.GetSellPrice();
             }
 
-            var summ = project.GetModernisationCost()
-                .ToString("### ### ### ### ### ###.##");
+            var summ = project.GetModernisationCost().ToMoney();
 
             modernSummLabel.Text = $"ИТОГО: {summ}";
             RefreshProfit();
@@ -73,10 +75,11 @@ namespace EveIndustry.Forms
                 var row = productMaterialsDataGridView.Rows[num];
                 row.Cells["itemName2"].Value = item.Item.Name;
                 row.Cells["count2"].Value = item.Count;
+                row.Cells["price1"].Value = item.Item.GetSellPrice();
+                row.Cells["summ1"].Value = item.Count * item.Item.GetSellPrice();
             }
 
-            var summ = project.GetProdustionCost()
-                .ToString("### ### ### ### ### ###.##");
+            var summ = project.GetProdustionCost().ToMoney();
 
             productSummLabel.Text = $"ИТОГО: {summ}";
             RefreshProfit();
@@ -85,8 +88,7 @@ namespace EveIndustry.Forms
 
         private void RefreshReadyItemsCost()
         {
-            var summ = project.GetReadyItemsCost()
-                .ToString("### ### ### ### ### ###.##");
+            var summ = project.GetReadyItemsCost().ToMoney();
 
             readyItemsCostLabel.Text =
                $"Готовые изделия: {summ}";
@@ -94,9 +96,7 @@ namespace EveIndustry.Forms
 
         private void RefreshProfit()
         {
-            var summ = project.GetProfit()
-                 .ToString("### ### ### ### ### ###.##");
-
+            var summ = project.GetProfit().ToMoney();
             profitLabel.Text =
                 $"Профит: {summ}";
         }

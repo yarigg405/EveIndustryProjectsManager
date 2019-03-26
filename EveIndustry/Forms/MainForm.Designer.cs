@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.addNewMediumProjectButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.reloadPricesButton = new System.Windows.Forms.Button();
             this.refreshButton = new System.Windows.Forms.Button();
-            this.addNewProjectButton = new System.Windows.Forms.Button();
+            this.addNewSmallProjectButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.projectsDataGridView = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,6 +59,7 @@
             this.goToPurchasesListButton = new System.Windows.Forms.Button();
             this.fullProfitLabel = new System.Windows.Forms.Label();
             this.fullCostLabel = new System.Windows.Forms.Label();
+            this.deleteProjectButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.projectsDataGridView)).BeginInit();
@@ -72,14 +74,26 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.addNewMediumProjectButton);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.reloadPricesButton);
             this.panel1.Controls.Add(this.refreshButton);
-            this.panel1.Controls.Add(this.addNewProjectButton);
+            this.panel1.Controls.Add(this.addNewSmallProjectButton);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(469, 78);
             this.panel1.TabIndex = 0;
+            // 
+            // addNewMediumProjectButton
+            // 
+            this.addNewMediumProjectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addNewMediumProjectButton.Location = new System.Drawing.Point(45, 3);
+            this.addNewMediumProjectButton.Name = "addNewMediumProjectButton";
+            this.addNewMediumProjectButton.Size = new System.Drawing.Size(36, 36);
+            this.addNewMediumProjectButton.TabIndex = 4;
+            this.addNewMediumProjectButton.Text = "+";
+            this.addNewMediumProjectButton.UseVisualStyleBackColor = true;
+            this.addNewMediumProjectButton.Click += new System.EventHandler(this.addNewMediumProjectButton_Click);
             // 
             // button1
             // 
@@ -105,7 +119,7 @@
             // 
             // refreshButton
             // 
-            this.refreshButton.Location = new System.Drawing.Point(45, 3);
+            this.refreshButton.Location = new System.Drawing.Point(324, 3);
             this.refreshButton.Name = "refreshButton";
             this.refreshButton.Size = new System.Drawing.Size(36, 36);
             this.refreshButton.TabIndex = 1;
@@ -113,15 +127,16 @@
             this.refreshButton.UseVisualStyleBackColor = true;
             this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             // 
-            // addNewProjectButton
+            // addNewSmallProjectButton
             // 
-            this.addNewProjectButton.Location = new System.Drawing.Point(3, 3);
-            this.addNewProjectButton.Name = "addNewProjectButton";
-            this.addNewProjectButton.Size = new System.Drawing.Size(36, 36);
-            this.addNewProjectButton.TabIndex = 0;
-            this.addNewProjectButton.Text = "+";
-            this.addNewProjectButton.UseVisualStyleBackColor = true;
-            this.addNewProjectButton.Click += new System.EventHandler(this.addNewProjectButton_Click);
+            this.addNewSmallProjectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addNewSmallProjectButton.Location = new System.Drawing.Point(3, 3);
+            this.addNewSmallProjectButton.Name = "addNewSmallProjectButton";
+            this.addNewSmallProjectButton.Size = new System.Drawing.Size(36, 36);
+            this.addNewSmallProjectButton.TabIndex = 0;
+            this.addNewSmallProjectButton.Text = "+";
+            this.addNewSmallProjectButton.UseVisualStyleBackColor = true;
+            this.addNewSmallProjectButton.Click += new System.EventHandler(this.addNewProjectButton_Click);
             // 
             // panel2
             // 
@@ -175,9 +190,9 @@
             // 
             // profit
             // 
-            dataGridViewCellStyle25.Format = "N2";
-            dataGridViewCellStyle25.NullValue = null;
-            this.profit.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.profit.DefaultCellStyle = dataGridViewCellStyle4;
             this.profit.HeaderText = "Profit";
             this.profit.Name = "profit";
             // 
@@ -193,6 +208,7 @@
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.deleteProjectButton);
             this.panel3.Controls.Add(this.addInProjectListButton);
             this.panel3.Location = new System.Drawing.Point(12, 457);
             this.panel3.Name = "panel3";
@@ -259,18 +275,18 @@
             // 
             // ProjectCost
             // 
-            dataGridViewCellStyle26.Format = "N2";
-            dataGridViewCellStyle26.NullValue = null;
-            this.ProjectCost.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = null;
+            this.ProjectCost.DefaultCellStyle = dataGridViewCellStyle5;
             this.ProjectCost.HeaderText = "Затраты";
             this.ProjectCost.Name = "ProjectCost";
             this.ProjectCost.Width = 90;
             // 
             // ProjectProfit
             // 
-            dataGridViewCellStyle27.Format = "N2";
-            dataGridViewCellStyle27.NullValue = null;
-            this.ProjectProfit.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = null;
+            this.ProjectProfit.DefaultCellStyle = dataGridViewCellStyle6;
             this.ProjectProfit.HeaderText = "Профит";
             this.ProjectProfit.Name = "ProjectProfit";
             this.ProjectProfit.Width = 90;
@@ -338,6 +354,17 @@
             this.fullCostLabel.TabIndex = 0;
             this.fullCostLabel.Text = "Общая стоимость: ";
             // 
+            // deleteProjectButton
+            // 
+            this.deleteProjectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.deleteProjectButton.Location = new System.Drawing.Point(3, 3);
+            this.deleteProjectButton.Name = "deleteProjectButton";
+            this.deleteProjectButton.Size = new System.Drawing.Size(148, 36);
+            this.deleteProjectButton.TabIndex = 5;
+            this.deleteProjectButton.Text = "Удалить выбранное";
+            this.deleteProjectButton.UseVisualStyleBackColor = true;
+            this.deleteProjectButton.Click += new System.EventHandler(this.deleteProjectButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -370,7 +397,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView projectsDataGridView;
         private System.Windows.Forms.Button refreshButton;
-        private System.Windows.Forms.Button addNewProjectButton;
+        private System.Windows.Forms.Button addNewSmallProjectButton;
         private System.Windows.Forms.Button reloadPricesButton;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button addInProjectListButton;
@@ -392,5 +419,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ProjectProfit;
         private System.Windows.Forms.Button removeFromProjectsListButton;
         private System.Windows.Forms.Button clearProjectsListButton;
+        private System.Windows.Forms.Button addNewMediumProjectButton;
+        private System.Windows.Forms.Button deleteProjectButton;
     }
 }

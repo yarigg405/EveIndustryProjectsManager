@@ -67,9 +67,17 @@ namespace EveIndustry.Forms
                 fullProfit += proj.GetProfit();
             }
 
-            fullCostLabel.Text = "Общая стоимость: " + fullCost;
-            fullProfitLabel.Text = "Общий профит: " + fullProfit;
+            fullCostLabel.Text = "Общая стоимость: " + fullCost.ToMoney();
+            fullProfitLabel.Text = "Общий профит: " + fullProfit.ToMoney();
            
+        }
+
+        private void OpenProject(Project project)
+        {
+            ProjectForm form = new ProjectForm(project);
+            var result = form.ShowDialog();
+            if (result == DialogResult.OK)
+                RefreshTable();
         }
 
 
@@ -78,12 +86,20 @@ namespace EveIndustry.Forms
         {
             Project project = new Project
             {
+                BlueprintsCount = 3,
+                ItemsCount = 10,
             };
+            OpenProject(project);
+        }
 
-            ProjectForm form = new ProjectForm(project);
-            var result = form.ShowDialog();
-            if (result == DialogResult.OK)
-                RefreshTable();
+        private void addNewMediumProjectButton_Click(object sender, EventArgs e)
+        {
+            Project project = new Project
+            {
+                BlueprintsCount = 1,
+                ItemsCount = 10,
+            };
+            OpenProject(project);
         }
 
         private void refreshButton_Click(object sender, EventArgs e)
@@ -192,7 +208,8 @@ namespace EveIndustry.Forms
         {
             if (projectsDataGridView.CurrentCell.GetType() == typeof(DataGridViewCheckBoxCell))
             {
-                projectsDataGridView.CurrentCell.Value = true;
+                projectsDataGridView.CurrentCell.Value =
+                    !(bool)projectsDataGridView.CurrentCell.Value;
             }
 
 
@@ -203,7 +220,8 @@ namespace EveIndustry.Forms
 
             if (projectsListDataGridView.CurrentCell.GetType() == typeof(DataGridViewCheckBoxCell))
             {
-                projectsListDataGridView.CurrentCell.Value = true;
+                projectsListDataGridView.CurrentCell.Value =
+                    !(bool)projectsListDataGridView.CurrentCell.Value;
             }
         }
 
@@ -211,6 +229,40 @@ namespace EveIndustry.Forms
         {
             PurchasesListForm form = new PurchasesListForm(projectsList);
             var result = form.ShowDialog();
+
+        }
+
+        private void deleteProjectButton_Click(object sender, EventArgs e)
+        {
+            List<Project> forDeleting = new List<Project>();           
+
+            foreach (DataGridViewRow row in projectsDataGridView.Rows)
+            {
+                if ((bool)row.Cells["isChecked"].Value == true)
+                {
+                    var id = (int)row.Cells["id"].Value;
+
+                    var proj = Program.dataBase.Projects
+                        .Where(p => p.Id == id).FirstOrDefault();
+
+                    forDeleting.Add(proj);
+                }
+            }
+
+            var result =
+            MessageBox.Show(
+               $"Действительно удалить {forDeleting.Count} проектов?",
+               "Подтвердите удаление",
+               MessageBoxButtons.OKCancel);
+
+            if (result == DialogResult.OK)
+            {
+                Program.dataBase.Projects.RemoveRange(forDeleting);
+                Program.dataBase.SaveChanges();
+
+                RefreshTable();
+            }
+
 
         }
     }

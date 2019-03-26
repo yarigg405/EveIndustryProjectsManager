@@ -7,7 +7,10 @@ namespace EveIndustry.Controllers
 {
    public static class Extensions
     {
-
+        public static string ToMoney(this decimal value)
+        {
+            return value.ToString("N2");
+        }
        
     }
 }

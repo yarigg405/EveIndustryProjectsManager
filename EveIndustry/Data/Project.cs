@@ -20,9 +20,7 @@ namespace EveIndustry.Data
         public virtual List<ItemsProduction> ProductionsItems { get; set; }
 
         public Project()
-        {
-            BlueprintsCount = 3;
-            ItemsCount = 10;
+        {            
             ModernisationItems = new List<ItemsModernisation>();
             ProductionsItems = new List<ItemsProduction>();
         }

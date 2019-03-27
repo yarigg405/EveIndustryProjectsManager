@@ -20,6 +20,7 @@ namespace EveIndustry.Forms
         {
             Icon = base.Icon;
             StartPosition = FormStartPosition.CenterParent;
+            Name += $"   ver. {Application.ProductVersion}";
         }
 
     }

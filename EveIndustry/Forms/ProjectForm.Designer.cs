@@ -28,16 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.projectNameTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.readyItemsCountUpDown = new System.Windows.Forms.NumericUpDown();
             this.modernMaterialsDataGridView = new System.Windows.Forms.DataGridView();
+            this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.count = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.summ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productMaterialsDataGridView = new System.Windows.Forms.DataGridView();
+            this.itemName2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.count2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.summ1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.modernItemsAddButton = new System.Windows.Forms.Button();
@@ -57,14 +66,8 @@
             this.addingItemsRichTextBox = new System.Windows.Forms.RichTextBox();
             this.blueprintsCountUpDown = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
-            this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.count = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.summ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.itemName2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.count2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.summ1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.searchItemContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.searchItemButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.readyItemsCountUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modernMaterialsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productMaterialsDataGridView)).BeginInit();
@@ -120,6 +123,36 @@
             this.modernMaterialsDataGridView.Size = new System.Drawing.Size(320, 200);
             this.modernMaterialsDataGridView.TabIndex = 14;
             // 
+            // ItemName
+            // 
+            this.ItemName.HeaderText = "Наименование";
+            this.ItemName.Name = "ItemName";
+            this.ItemName.Width = 105;
+            // 
+            // count
+            // 
+            this.count.HeaderText = "Количество";
+            this.count.Name = "count";
+            this.count.Width = 30;
+            // 
+            // price
+            // 
+            dataGridViewCellStyle13.Format = "N2";
+            dataGridViewCellStyle13.NullValue = null;
+            this.price.DefaultCellStyle = dataGridViewCellStyle13;
+            this.price.HeaderText = "Цена";
+            this.price.Name = "price";
+            this.price.Width = 70;
+            // 
+            // summ
+            // 
+            dataGridViewCellStyle14.Format = "N2";
+            dataGridViewCellStyle14.NullValue = null;
+            this.summ.DefaultCellStyle = dataGridViewCellStyle14;
+            this.summ.HeaderText = "Сумма";
+            this.summ.Name = "summ";
+            this.summ.Width = 70;
+            // 
             // productMaterialsDataGridView
             // 
             this.productMaterialsDataGridView.AllowUserToAddRows = false;
@@ -134,6 +167,36 @@
             this.productMaterialsDataGridView.Name = "productMaterialsDataGridView";
             this.productMaterialsDataGridView.Size = new System.Drawing.Size(320, 200);
             this.productMaterialsDataGridView.TabIndex = 15;
+            // 
+            // itemName2
+            // 
+            this.itemName2.HeaderText = "Наименование";
+            this.itemName2.Name = "itemName2";
+            this.itemName2.Width = 105;
+            // 
+            // count2
+            // 
+            this.count2.HeaderText = "Количество";
+            this.count2.Name = "count2";
+            this.count2.Width = 30;
+            // 
+            // price1
+            // 
+            dataGridViewCellStyle15.Format = "N2";
+            dataGridViewCellStyle15.NullValue = null;
+            this.price1.DefaultCellStyle = dataGridViewCellStyle15;
+            this.price1.HeaderText = "Цена";
+            this.price1.Name = "price1";
+            this.price1.Width = 70;
+            // 
+            // summ1
+            // 
+            dataGridViewCellStyle16.Format = "N2";
+            dataGridViewCellStyle16.NullValue = null;
+            this.summ1.DefaultCellStyle = dataGridViewCellStyle16;
+            this.summ1.HeaderText = "Сумма";
+            this.summ1.Name = "summ1";
+            this.summ1.Width = 70;
             // 
             // label7
             // 
@@ -235,19 +298,17 @@
             // 
             // itemIdTextBox
             // 
-            this.itemIdTextBox.Location = new System.Drawing.Point(228, 64);
+            this.itemIdTextBox.Location = new System.Drawing.Point(230, 63);
             this.itemIdTextBox.Name = "itemIdTextBox";
-            this.itemIdTextBox.Size = new System.Drawing.Size(100, 20);
+            this.itemIdTextBox.Size = new System.Drawing.Size(98, 20);
             this.itemIdTextBox.TabIndex = 27;
-            this.itemIdTextBox.Leave += new System.EventHandler(this.itemIdTextBox_Leave);
             // 
             // itemNameTextBox
             // 
             this.itemNameTextBox.Location = new System.Drawing.Point(12, 64);
             this.itemNameTextBox.Name = "itemNameTextBox";
-            this.itemNameTextBox.Size = new System.Drawing.Size(210, 20);
+            this.itemNameTextBox.Size = new System.Drawing.Size(192, 20);
             this.itemNameTextBox.TabIndex = 28;
-            this.itemNameTextBox.Leave += new System.EventHandler(this.itemNameTextBox_Leave);
             // 
             // label2
             // 
@@ -261,7 +322,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(225, 48);
+            this.label4.Location = new System.Drawing.Point(233, 47);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(18, 13);
             this.label4.TabIndex = 30;
@@ -314,71 +375,27 @@
             this.label5.TabIndex = 35;
             this.label5.Text = "Количество чертежей";
             // 
-            // ItemName
+            // searchItemContextMenuStrip
             // 
-            this.ItemName.HeaderText = "Наименование";
-            this.ItemName.Name = "ItemName";
-            this.ItemName.Width = 105;
+            this.searchItemContextMenuStrip.Name = "searchItemContextMenuStrip";
+            this.searchItemContextMenuStrip.Size = new System.Drawing.Size(61, 4);
             // 
-            // count
+            // searchItemButton
             // 
-            this.count.HeaderText = "Количество";
-            this.count.Name = "count";
-            this.count.Width = 30;
-            // 
-            // price
-            // 
-            dataGridViewCellStyle1.Format = "N2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.price.DefaultCellStyle = dataGridViewCellStyle1;
-            this.price.HeaderText = "Цена";
-            this.price.Name = "price";
-            this.price.Width = 70;
-            // 
-            // summ
-            // 
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.summ.DefaultCellStyle = dataGridViewCellStyle2;
-            this.summ.HeaderText = "Сумма";
-            this.summ.Name = "summ";
-            this.summ.Width = 70;
-            // 
-            // itemName2
-            // 
-            this.itemName2.HeaderText = "Наименование";
-            this.itemName2.Name = "itemName2";
-            this.itemName2.Width = 105;
-            // 
-            // count2
-            // 
-            this.count2.HeaderText = "Количество";
-            this.count2.Name = "count2";
-            this.count2.Width = 30;
-            // 
-            // price1
-            // 
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.price1.DefaultCellStyle = dataGridViewCellStyle3;
-            this.price1.HeaderText = "Цена";
-            this.price1.Name = "price1";
-            this.price1.Width = 70;
-            // 
-            // summ1
-            // 
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.summ1.DefaultCellStyle = dataGridViewCellStyle4;
-            this.summ1.HeaderText = "Сумма";
-            this.summ1.Name = "summ1";
-            this.summ1.Width = 70;
+            this.searchItemButton.Location = new System.Drawing.Point(207, 63);
+            this.searchItemButton.Name = "searchItemButton";
+            this.searchItemButton.Size = new System.Drawing.Size(20, 20);
+            this.searchItemButton.TabIndex = 36;
+            this.searchItemButton.Text = ">";
+            this.searchItemButton.UseVisualStyleBackColor = true;
+            this.searchItemButton.Click += new System.EventHandler(this.searchItemButton_Click);
             // 
             // ProjectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(676, 494);
+            this.Controls.Add(this.searchItemButton);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.blueprintsCountUpDown);
             this.Controls.Add(this.addingItemsRichTextBox);
@@ -452,5 +469,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn count2;
         private System.Windows.Forms.DataGridViewTextBoxColumn price1;
         private System.Windows.Forms.DataGridViewTextBoxColumn summ1;
+        private System.Windows.Forms.ContextMenuStrip searchItemContextMenuStrip;
+        private System.Windows.Forms.Button searchItemButton;
     }
 }

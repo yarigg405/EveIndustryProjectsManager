@@ -150,20 +150,7 @@ namespace EveIndustry.Forms
         {
             project.Name = projectNameTextBox.Text;
         }
-
-        private void itemNameTextBox_Leave(object sender, EventArgs e)
-        {
-            var item = Program.dataBase.Items.Where(i => i.Name.Contains(itemNameTextBox.Text)).FirstOrDefault();
-            if (item != null)
-                itemIdTextBox.Text = item.Id;
-            else
-                itemIdTextBox.Text = "error";
-
-            project.Item = item;
-            RefreshReadyItemsCost();
-
-        }
-
+                
         private void itemIdTextBox_Leave(object sender, EventArgs e)
         {
             var item = Program.dataBase.Items.Where(i => i.Id == itemIdTextBox.Text).FirstOrDefault();
@@ -304,10 +291,54 @@ namespace EveIndustry.Forms
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            Program.dataBase.Entry(project).Reload();
+            if (project.Id > 0)
+            {
+                Program.dataBase.Entry(project).Reload();
+            }
             DialogResult = DialogResult.Cancel;
+        }       
+                
+        private void MenuItemOnClick(object sender, EventArgs eventArgs)
+        {
+            var target = (ToolStripMenuItem)sender;
+            var item = Program.dataBase.Items.Where(it => it.Id == target.Name).FirstOrDefault();
+            project.Item = item;
+           
+            itemIdTextBox.Text = item.Id;
+            itemNameTextBox.Text = item.Name;
         }
 
+        private void searchItemButton_Click(object sender, EventArgs e)
+        {
+            if (itemNameTextBox.Text.Length > 2)
+            {
+                var items = (from t in Program.dataBase.Items
+                             where t.Name.Contains(itemNameTextBox.Text)
+                             select t).Take(10).ToList();
 
+                searchItemContextMenuStrip.Items.Clear();
+                for (int i = 0; i < items.Count; i++)
+                {
+                    var item = items[i];
+                    var contextItem = new ToolStripMenuItem();
+
+                    if (i < items.Count-1)
+                    {
+                        contextItem.Text = item.Name;
+                        contextItem.Name = item.Id;
+                        contextItem.Click += new EventHandler(MenuItemOnClick);
+                    }
+                    
+                    else
+                    {
+                        contextItem.Text = "... и еще";
+                        contextItem.Name = "0";
+                    }
+                    searchItemContextMenuStrip.Items.Add(contextItem);
+                }
+                
+                searchItemContextMenuStrip.Show(Cursor.Position);
+            }
+        }
     }
 }

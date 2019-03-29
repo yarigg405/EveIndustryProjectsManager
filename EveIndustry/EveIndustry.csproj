@@ -77,11 +77,23 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ProjectsAllForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProjectsAllForm.Designer.cs">
+      <DependentUpon>ProjectsAllForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ProjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\ProjectForm.Designer.cs">
       <DependentUpon>ProjectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ItemsCalculatorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ItemsCalculatorForm.Designer.cs">
+      <DependentUpon>ItemsCalculatorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\PurchasesListForm.cs">
       <SubType>Form</SubType>
@@ -125,8 +137,14 @@
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProjectsAllForm.resx">
+      <DependentUpon>ProjectsAllForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ProjectForm.resx">
       <DependentUpon>ProjectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ItemsCalculatorForm.resx">
+      <DependentUpon>ItemsCalculatorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PurchasesListForm.resx">
       <DependentUpon>PurchasesListForm.cs</DependentUpon>

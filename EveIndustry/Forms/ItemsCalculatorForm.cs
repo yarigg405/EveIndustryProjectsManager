@@ -165,8 +165,9 @@ namespace EveIndustry.Forms
             var result = new Dictionary<Item, int>();
             foreach (var str in input)
             {
-                var name = str[0];                
-                Item item = Program.dataBase.Items.FirstOrDefault(x => x.Name == name);                if (item != null)
+                var name = str[0];
+                Item item = Program.dataBase.Items.FirstOrDefault(x => x.Name == name);
+                if (item != null)
                 {
                     int count = ParseCount(str[1]);
 
@@ -203,7 +204,7 @@ namespace EveIndustry.Forms
 
         }
 
-                              
+
 
         //        foreach (string str in importExportRichTextBox.Text.Split('\n'))
         //        {
@@ -257,7 +258,7 @@ namespace EveIndustry.Forms
                 sb.Append("\n");
             }
 
-           
+
             importExportRichTextBox.Text = sb.ToString();
             Clipboard.SetText(importExportRichTextBox.Text);
             importExportRichTextBox.Clear();
@@ -276,6 +277,6 @@ namespace EveIndustry.Forms
             currentItems.Clear();
             RefreshCurrentDataGrid();
             RefreshResultDataGrid();
-        }        
+        }
     }
 }

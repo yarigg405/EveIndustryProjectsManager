@@ -26,32 +26,42 @@ namespace EveIndustry.Controllers
 
 
 
-            var regex1 = new Regex(@"(^)(.*)(\t)");
-            var regex2 = new Regex(@".*\*??\t");
-            var countRegex1 = new Regex(@"(\t)([0-9]*)");
+            //var regex1 = new Regex(@"(^)(.*)(\t)");
+            //var regex2 = new Regex(@".*\*??\t");
+            //var countRegex1 = new Regex(@"(\t)([0-9]*)");
+
+            //foreach (var str in input.Split(separators, StringSplitOptions.RemoveEmptyEntries))
+            //{
+            //    string name = "";
+            //    string count = "0";
+
+
+            //    name = //GetString(str, "^", "\\t");
+
+            //    regex2.Match(str).Success ? regex2.Match(str).Value.Replace("*", "") :
+            //    regex1.Match(str).Success ? regex1.Match(str).Value.Replace("\t", "") :
+
+            //    "";
+
+            //    count = countRegex1.Match(str).Success ?
+            //        countRegex1.Match(str).Value.Replace("\t", "") :
+            //        "0";
+
+
+
+            //    if (name != "")
+            //        result.Add(new string[] { name, count });
+
+            //}
 
             foreach (var str in input.Split(separators, StringSplitOptions.RemoveEmptyEntries))
             {
-                string name = "";
-                string count = "0";
-
-
-                name = //GetString(str, "^", "\\t");
-
-                regex2.Match(str).Success ? regex2.Match(str).Value.Replace("*", "") :
-                regex1.Match(str).Success ? regex1.Match(str).Value.Replace("\t", "") :
-
-                "";
-
-                count = countRegex1.Match(str).Success ?
-                    countRegex1.Match(str).Value.Replace("\t", "") :
-                    "0";
-
-
+                var array = str.Split('\t');
+                var name = array[0].Replace("*", "");
+                var count = array[1];
 
                 if (name != "")
                     result.Add(new string[] { name, count });
-
             }
 
             return result;
@@ -85,7 +95,5 @@ namespace EveIndustry.Controllers
 
 
     }
-
-
 
 }

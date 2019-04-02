@@ -15,90 +15,131 @@ namespace EveIndustry.Forms
 {
     public partial class ItemsCalculatorForm : _BaseForm
     {
-        private Dictionary<Item, int> items = new Dictionary<Item, int>();
-        private decimal totalSumm;
-
+        private Dictionary<Item, int> neededItems = new Dictionary<Item, int>();
+        private Dictionary<Item, int> currentItems = new Dictionary<Item, int>();
+        private Dictionary<Item, int> resultItems;
 
         public ItemsCalculatorForm()
         {
             InitializeComponent();
             InitializeBaseForm();
 
-            RefreshDataGrid();
+            RefreshDataGrids();
+        }
+
+        public void RefreshDataGrids()
+        {
+            RefreshNeededDataGrid();
+            RefreshCurrentDataGrid();
+            RefreshResultDataGrid();
+        }
+
+        public void RefreshNeededDataGrid()
+        {
+            RefreshDataGrid(neededItems, neededDataGrdV, totalNeedSummLabel);
+
+        }
+
+        public void RefreshCurrentDataGrid()
+        {
+            RefreshDataGrid(currentItems, currentDataGrdV, totalCurrentSummLabel);
+        }
+
+        public void RefreshResultDataGrid()
+        {
+            resultItems = new Dictionary<Item, int>();
+            foreach (var needed in neededItems)
+            {
+                var item = needed.Key;
+                var count = needed.Value;
+
+                if (currentItems.ContainsKey(item))
+                    count -= currentItems[item];
+
+                if (count > 0)
+                    resultItems.Add(item, count);
+            }
+
+            RefreshDataGrid(resultItems, resultDataGrdV, totalResultSummLabel);
+
         }
 
 
-        private void RefreshDataGrid()
+        private void RefreshDataGrid(Dictionary<Item, int> items,
+            DataGridView dataGrid, Label summLabel)
         {
-            modernisationsItemsDataGridView.Rows.Clear();
-            totalSumm = 0;
+            dataGrid.Rows.Clear();
+            decimal totalSumm = 0;
 
             foreach (var pair in items)
             {
-                var num = modernisationsItemsDataGridView.Rows.Add();
-                var row = modernisationsItemsDataGridView.Rows[num];
+                var num = dataGrid.Rows.Add();
+                var row = dataGrid.Rows[num];
 
-                row.Cells["itemName"].Value = pair.Key.Name;
-                row.Cells["itemCount"].Value = pair.Value;
-                row.Cells["itemPrice"].Value = pair.Key.GetSellPrice();
+                row.Cells[0].Value = pair.Key.Name;
+                row.Cells[1].Value = pair.Value;
+                row.Cells[2].Value = pair.Key.GetSellPrice();
                 var summ = pair.Key.GetSellPrice() * pair.Value;
-                row.Cells["itemSumm"].Value = summ;
+                row.Cells[3].Value = summ;
+
                 totalSumm += summ;
-
             }
 
-            totalSummLabel.Text= "Примерная сумма: " + totalSumm.ToMoney();
-
+            summLabel.Text = totalSumm.ToMoney();
         }
 
-        private string[] ParseString(string str)
-        {
-            try
-            {
-                string name = Regex.Match(str, @"()(.*?)(\*)").Value.Replace("*", "");
-                string count = Regex.Matches(str, @"\s[0-9]*\s")[0].Value;
 
-                return new string[]
-                     {
-                        name,
-                        count,
-                     };
-            }
 
-            catch
-            {
-                return new string[]
-                    {
-                        "",
-                        "",
-                    };
-            }
-        }
 
-        private string[] ParseString1(string str)
-        {
-            try
-            {
-                string name = Regex.Match(str, @".*\*").Value.Replace("*", "");
-                string count = Regex.Matches(str, @"\s[0-9]*\s")[0].Value;
 
-                return new string[]
-                     {
-                        name,
-                        count,
-                     };
-            }
+        //private string[] ParseString(string str)
+        //{
+        //    try
+        //    {
+        //        string name = Regex.Match(str, @"()(.*?)(\*)").Value.Replace("*", "");
+        //        string count = Regex.Matches(str, @"\s[0-9]*\s")[0].Value;
 
-            catch
-            {
-                return new string[]
-                    {
-                        "",
-                        "",
-                    };
-            }
+        //        return new string[]
+        //             {
+        //                name,
+        //                count,
+        //             };
+        //    }
 
-        }
+        //    catch
+        //    {
+        //        return new string[]
+        //            {
+        //                "",
+        //                "",
+        //            };
+        //    }
+        //}
+
+        //private string[] ParseString1(string str)
+        //{
+        //    try
+        //    {
+        //        string name = Regex.Match(str, @".*\*").Value.Replace("*", "");
+        //        string count = Regex.Matches(str, @"\s[0-9]*\s")[0].Value;
+
+        //        return new string[]
+        //             {
+        //                name,
+        //                count,
+        //             };
+        //    }
+
+        //    catch
+        //    {
+        //        return new string[]
+        //            {
+        //                "",
+        //                "",
+        //            };
+        //    }
+
+        //}
 
 
         private int ParseCount(string str)
@@ -113,9 +154,30 @@ namespace EveIndustry.Forms
 
             catch
             {
-                MessageBox.Show("ERROR\n#" + str + "#");
+                //MessageBox.Show("ERROR\n#" + str + "#");
                 return 0;
             }
+
+        }
+
+        private Dictionary<Item, int> GetItemsFromStrings(List<string[]> input)
+        {
+            var result = new Dictionary<Item, int>();
+            foreach (var str in input)
+            {
+                var name = str[0];                
+                Item item = Program.dataBase.Items.FirstOrDefault(x => x.Name == name);                if (item != null)
+                {
+                    int count = ParseCount(str[1]);
+
+                    if (!result.ContainsKey(item))
+                        result.Add(item, count);
+                    else
+                        result[item] += count;
+                }
+            }
+
+            return result;
 
         }
 
@@ -124,64 +186,70 @@ namespace EveIndustry.Forms
 
         private void dropToAddButton_Click(object sender, EventArgs e)
         {
+            importExportRichTextBox.Text = Clipboard.GetText();
+            var strings = Extensions.ParseText(importExportRichTextBox.Text);
+            var items = GetItemsFromStrings(strings);
+
+            foreach (var item in items)
             {
-                importExportRichTextBox.Text = Clipboard.GetText();
+                if (!neededItems.ContainsKey(item.Key))
+                    neededItems.Add(item.Key, 0);
+
+                neededItems[item.Key] += item.Value;
+            }
+            RefreshNeededDataGrid();
+            RefreshResultDataGrid();
+            importExportRichTextBox.Clear();
+
+        }
+
                               
 
-                foreach (string str in importExportRichTextBox.Text.Split('\n'))
-                {
-                    var output = ParseString1(str);
-                    var itemStr = output[0];
-                    var countStr = output[1];
+        //        foreach (string str in importExportRichTextBox.Text.Split('\n'))
+        //        {
+        //            var output = ParseString1(str);
+        //            var itemStr = output[0];
+        //            var countStr = output[1];
 
-                    if (itemStr != "")
-                    {
-                        var count = ParseCount(countStr);
-                        var item = Program.dataBase.Items.Where(i => i.Name == itemStr).FirstOrDefault();
+        //            if (itemStr != "")
+        //            {
+        //                var count = ParseCount(countStr);
+        //                var item = Program.dataBase.Items.Where(i => i.Name == itemStr).FirstOrDefault();
 
-                        if (!items.ContainsKey(item))
-                            items.Add(item, 0);
+        //                if (!items.ContainsKey(item))
+        //                    items.Add(item, 0);
 
-                        items[item] += count;
-                    }
-                }
-                importExportRichTextBox.Clear();
-                RefreshDataGrid();
-            }
-        }
+        //                items[item] += count;
+        //            }
+        //        }
+        //        importExportRichTextBox.Clear();
+        //        RefreshDataGrid();
+        //    }
+        //}
 
         private void dropToRemoveButton_Click(object sender, EventArgs e)
         {
             importExportRichTextBox.Text = Clipboard.GetText();
+            var strings = Extensions.ParseText(importExportRichTextBox.Text);
+            var items = GetItemsFromStrings(strings);
 
-            var separator = new string[] { "ISK" };
-
-            foreach (string str in importExportRichTextBox.Text.Split(separator, StringSplitOptions.RemoveEmptyEntries))
+            foreach (var item in items)
             {
-                var output = ParseString(str);
-                var itemStr = output[0];
-                var countStr = output[1];
+                if (!currentItems.ContainsKey(item.Key))
+                    currentItems.Add(item.Key, 0);
 
-                if (itemStr != "")
-                {
-                    var count = ParseCount(countStr);
-                    var item = Program.dataBase.Items.Where(i => i.Name == itemStr).FirstOrDefault();
-                    if (items.ContainsKey(item))
-                    {
-                        items[item] -= count;
-                        if (items[item] <= 0)
-                            items.Remove(item);
-                    }
-                }
+                currentItems[item.Key] += item.Value;
             }
+            RefreshCurrentDataGrid();
+            RefreshResultDataGrid();
             importExportRichTextBox.Clear();
-            RefreshDataGrid();
+
         }
 
         private void exportButton_Click(object sender, EventArgs e)
         {
             StringBuilder sb = new StringBuilder();
-            foreach (var item in items)
+            foreach (var item in resultItems)
             {
                 sb.Append(item.Key.Name);
                 sb.Append("\t");
@@ -196,5 +264,18 @@ namespace EveIndustry.Forms
 
         }
 
+        private void clearNeededListButton_Click(object sender, EventArgs e)
+        {
+            neededItems.Clear();
+            RefreshNeededDataGrid();
+            RefreshResultDataGrid();
+        }
+
+        private void clearCurrentListButton_Click(object sender, EventArgs e)
+        {
+            currentItems.Clear();
+            RefreshCurrentDataGrid();
+            RefreshResultDataGrid();
+        }        
     }
 }

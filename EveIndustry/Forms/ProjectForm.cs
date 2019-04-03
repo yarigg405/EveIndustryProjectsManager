@@ -322,7 +322,7 @@ namespace EveIndustry.Forms
                     var item = items[i];
                     var contextItem = new ToolStripMenuItem();
 
-                    if (i < items.Count-1)
+                    if (i < 9)
                     {
                         contextItem.Text = item.Name;
                         contextItem.Name = item.Id;

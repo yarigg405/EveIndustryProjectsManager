@@ -65,12 +65,22 @@
   <ItemGroup>
     <Compile Include="Controllers\Extensions.cs" />
     <Compile Include="Controllers\PriceLoader.cs" />
+    <Compile Include="Data\Blueprint.cs" />
     <Compile Include="Data\DataBaseContext.cs" />
     <Compile Include="Data\Item.cs" />
+    <Compile Include="Data\ItemsList.cs" />
+    <Compile Include="Data\ItemsListCopyring.cs" />
+    <Compile Include="Data\ItemsListModertisation.cs" />
+    <Compile Include="Data\ItemsListProduction.cs" />
     <Compile Include="Data\ItemsProduction.cs" />
     <Compile Include="Data\ItemsModernisation.cs" />
     <Compile Include="Data\Order.cs" />
     <Compile Include="Data\Project.cs" />
+    <Compile Include="Data\Skill.cs" />
+    <Compile Include="Data\SkillList.cs" />
+    <Compile Include="Data\SkillListCopyring.cs" />
+    <Compile Include="Data\SkillListModernisation.cs" />
+    <Compile Include="Data\SkillListProduction.cs" />
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,31 +117,6 @@
     <Compile Include="Forms\_BaseForm.Designer.cs">
       <DependentUpon>_BaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903210623283_Initial.cs" />
-    <Compile Include="Migrations\201903210623283_Initial.Designer.cs">
-      <DependentUpon>201903210623283_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903210819509_Added count of blueprints.cs" />
-    <Compile Include="Migrations\201903210819509_Added count of blueprints.Designer.cs">
-      <DependentUpon>201903210819509_Added count of blueprints.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903211006082_Added orders table.cs" />
-    <Compile Include="Migrations\201903211006082_Added orders table.Designer.cs">
-      <DependentUpon>201903211006082_Added orders table.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903211006438_Added orders table1.cs" />
-    <Compile Include="Migrations\201903211006438_Added orders table1.Designer.cs">
-      <DependentUpon>201903211006438_Added orders table1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903211148409_Changed Project%27s item.cs" />
-    <Compile Include="Migrations\201903211148409_Changed Project%27s item.Designer.cs">
-      <DependentUpon>201903211148409_Changed Project%27s item.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903211327157_Changed Order-Item relation.cs" />
-    <Compile Include="Migrations\201903211327157_Changed Order-Item relation.Designer.cs">
-      <DependentUpon>201903211327157_Changed Order-Item relation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\MainForm.resx">
@@ -151,24 +136,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\_BaseForm.resx">
       <DependentUpon>_BaseForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903210623283_Initial.resx">
-      <DependentUpon>201903210623283_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903210819509_Added count of blueprints.resx">
-      <DependentUpon>201903210819509_Added count of blueprints.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903211006082_Added orders table.resx">
-      <DependentUpon>201903211006082_Added orders table.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903211006438_Added orders table1.resx">
-      <DependentUpon>201903211006438_Added orders table1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903211148409_Changed Project%27s item.resx">
-      <DependentUpon>201903211148409_Changed Project%27s item.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903211327157_Changed Order-Item relation.resx">
-      <DependentUpon>201903211327157_Changed Order-Item relation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

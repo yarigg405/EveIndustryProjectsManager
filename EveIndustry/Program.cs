@@ -31,9 +31,7 @@ namespace EveIndustry
         private static void Initialize()
         {
             dataBase = new DataBaseContext();
-            
-
-           // LoadItemsDataBase();
+            // LoadItemsDataBase();
         }
 
         //private static void LoadItemsDataBase()

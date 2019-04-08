@@ -7,16 +7,27 @@ using System.Data.Entity;
 
 namespace EveIndustry.Data
 {
-   public class DataBaseContext:DbContext
+    public class DataBaseContext : DbContext
     {
+#if DEBUG
         public DataBaseContext()
-            : base("DbConnection")
+            : base("DBTestConnection")
         {
         }
+#else
+        public DataBaseContext()
+            : base("DBConnection")
+        {
+        }
+#endif
+
+
+
 
         public DbSet<Item> Items { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<Blueprint> Blueprints { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

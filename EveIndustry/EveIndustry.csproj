@@ -66,21 +66,25 @@
     <Compile Include="Controllers\Extensions.cs" />
     <Compile Include="Controllers\PriceLoader.cs" />
     <Compile Include="Data\Blueprint.cs" />
+    <Compile Include="Data\CopyingItemsList.cs" />
+    <Compile Include="Data\CopyingSkillList.cs" />
     <Compile Include="Data\DataBaseContext.cs" />
+    <Compile Include="Data\InventionItemsList.cs" />
+    <Compile Include="Data\InventionSkillList.cs" />
     <Compile Include="Data\Item.cs" />
     <Compile Include="Data\ItemsList.cs" />
-    <Compile Include="Data\ItemsListCopyring.cs" />
-    <Compile Include="Data\ItemsListModertisation.cs" />
-    <Compile Include="Data\ItemsListProduction.cs" />
     <Compile Include="Data\ItemsProduction.cs" />
     <Compile Include="Data\ItemsModernisation.cs" />
+    <Compile Include="Data\ManufacturingItemsList.cs" />
+    <Compile Include="Data\ManufacturingSkillList.cs" />
     <Compile Include="Data\Order.cs" />
     <Compile Include="Data\Project.cs" />
+    <Compile Include="Data\ResearchMaterialItemsList.cs" />
+    <Compile Include="Data\ResearchMaterialSkillList.cs" />
+    <Compile Include="Data\ResearchTimeItemsList.cs" />
+    <Compile Include="Data\ResearchTimeSkillList.cs" />
     <Compile Include="Data\Skill.cs" />
     <Compile Include="Data\SkillList.cs" />
-    <Compile Include="Data\SkillListCopyring.cs" />
-    <Compile Include="Data\SkillListModernisation.cs" />
-    <Compile Include="Data\SkillListProduction.cs" />
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +121,7 @@
     <Compile Include="Forms\_BaseForm.Designer.cs">
       <DependentUpon>_BaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\MainForm.resx">

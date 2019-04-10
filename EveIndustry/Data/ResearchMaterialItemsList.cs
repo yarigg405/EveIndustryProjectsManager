@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EveIndustry.Data
 {
-    public class SkillListProduction : SkillList
+    public class ResearchMaterialItemsList : ItemsList
     {
     }
 }

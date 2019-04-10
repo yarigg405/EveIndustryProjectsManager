@@ -68,6 +68,11 @@ namespace EveIndustry.Data
                 .WithRequired(or => or.Item);
 
 
+
+            modelBuilder.Entity<InventionItemsList>()
+                .HasKey(x=>x.
+
+
         }
 
     }

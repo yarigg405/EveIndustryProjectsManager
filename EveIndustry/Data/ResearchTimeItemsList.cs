@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EveIndustry.Data
 {
-    public class SkillListCopyring : SkillList
+    public class ResearchTimeItemsList : ItemsList
     {
     }
 }

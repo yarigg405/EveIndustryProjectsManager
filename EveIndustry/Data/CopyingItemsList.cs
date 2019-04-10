@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EveIndustry.Data
 {
-    public class ItemsListModertisation : ItemsList
+    public class CopyingItemsList : ItemsList
     {
     }
 }

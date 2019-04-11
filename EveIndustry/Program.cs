@@ -9,6 +9,7 @@ using System.IO;
 using YamlDotNet.Serialization;
 using YamlDotNet;
 using YamlDotNet.RepresentationModel;
+using yamldotnet;
 
 
 
@@ -46,18 +47,21 @@ namespace EveIndustry
             var filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
                 + "\\blueprints.yaml";
 
-            var input = new StringReader(filePath);
+            var deserializer = new Deserializer();
 
-            var yaml = new YamlStream();
-            yaml.Load(input);
-            var mapping =
-                (YamlMappingNode)yaml.Documents[0].RootNode;
+            string text = System.IO.File.ReadAllText(filePath);
+            var input = new StringReader(text);
 
-            foreach (var entry in mapping.Children)
-            {
-                Console.WriteLine(((YamlScalarNode)entry.Key).Value);
-            }
+            var blueprintsById = deserializer.Deserialize<Dictionary<int, YamlBlueprint>>(input);
 
+
+            LoadBlueprintsToDataBase(blueprintsById);
+
+        }
+
+        private static void LoadBlueprintsToDataBase(Dictionary<int, YamlBlueprint> blueprints)
+        {
+            здесь
         }
 
         //private static void LoadItemsDataBase()

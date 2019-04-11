@@ -1,10 +1,16 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using EveIndustry.Data;
 using EveIndustry.Forms;
 using System.IO;
+using YamlDotNet.Serialization;
+using YamlDotNet;
+using YamlDotNet.RepresentationModel;
+
+
 
 
 namespace EveIndustry
@@ -32,6 +38,26 @@ namespace EveIndustry
         {
             dataBase = new DataBaseContext();
             // LoadItemsDataBase();
+            LoadBlueprints();
+        }
+
+        private static void LoadBlueprints()
+        {
+            var filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
+                + "\\blueprints.yaml";
+
+            var input = new StringReader(filePath);
+
+            var yaml = new YamlStream();
+            yaml.Load(input);
+            var mapping =
+                (YamlMappingNode)yaml.Documents[0].RootNode;
+
+            foreach (var entry in mapping.Children)
+            {
+                Console.WriteLine(((YamlScalarNode)entry.Key).Value);
+            }
+
         }
 
         //private static void LoadItemsDataBase()

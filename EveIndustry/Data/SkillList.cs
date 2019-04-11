@@ -15,4 +15,5 @@ namespace EveIndustry.Data
 
         public int Level { get; set; }
     }
+
 }

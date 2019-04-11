@@ -12,6 +12,13 @@ namespace EveIndustry.Data
 
         public virtual ICollection<ItemsModernisation> ItemsModernisations { get; set; }
         public virtual ICollection<ItemsProduction> ItemsProductions { get; set; }
+
+        public virtual ICollection<CopyingItemsList> CopyingItems { get; set; }
+        public virtual ICollection<InventionItemsList> InventionItems { get; set; }
+        public virtual ICollection<ManufacturingItemsList> ManufacturingItems { get; set; }
+        public virtual ICollection<ResearchMaterialItemsList> ResearchMaterialItems { get; set; }
+        public virtual ICollection<ResearchTimeItemsList> ResearchTimeItems { get; set; }
+
         public Order Order { get; set; }
 
         public decimal GetBuyPrice()

@@ -154,7 +154,7 @@ namespace EveIndustry.Forms
 
             catch
             {
-                //MessageBox.Show("ERROR\n#" + str + "#");
+                MessageBox.Show("ERROR\n#" + str + "#");
                 return 0;
             }
 

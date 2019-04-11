@@ -69,8 +69,123 @@ namespace EveIndustry.Data
 
 
 
+            modelBuilder.Entity<CopyingItemsList>()
+                .HasKey(x => new { x.BlueprintId, x.ItemId });
             modelBuilder.Entity<InventionItemsList>()
-                .HasKey(x=>x.
+                .HasKey(x => new { x.BlueprintId, x.ItemId });
+            modelBuilder.Entity<ManufacturingItemsList>()
+                .HasKey(x => new { x.BlueprintId, x.ItemId });
+            modelBuilder.Entity<ResearchMaterialItemsList>()
+                .HasKey(x => new { x.BlueprintId, x.ItemId });
+            modelBuilder.Entity<ResearchTimeItemsList>()
+                .HasKey(x => new { x.BlueprintId, x.ItemId });
+
+            modelBuilder.Entity<CopyingSkillList>()
+                .HasKey(x => new { x.BlueprintId, x.SkillId });
+            modelBuilder.Entity<InventionSkillList>()
+                .HasKey(x => new { x.BlueprintId, x.SkillId });
+            modelBuilder.Entity<ManufacturingSkillList>()
+                .HasKey(x => new { x.BlueprintId, x.SkillId });
+            modelBuilder.Entity<ResearchMaterialSkillList>()
+                .HasKey(x => new { x.BlueprintId, x.SkillId });
+            modelBuilder.Entity<ResearchTimeSkillList>()
+                .HasKey(x => new { x.BlueprintId, x.SkillId });
+
+
+
+            modelBuilder.Entity<Blueprint>()
+                .HasMany(x => x.CopyingItems)
+                .WithRequired()
+                .HasForeignKey(x => x.BlueprintId);
+            modelBuilder.Entity<Item>()
+                .HasMany(x => x.CopyingItems)
+                .WithRequired()
+                .HasForeignKey(x => x.ItemId);
+
+            modelBuilder.Entity<Blueprint>()
+                .HasMany(x => x.InventionItems)
+                .WithRequired()
+                .HasForeignKey(x => x.BlueprintId);
+            modelBuilder.Entity<Item>()
+                .HasMany(x => x.InventionItems)
+                .WithRequired()
+                .HasForeignKey(x => x.ItemId);
+
+            modelBuilder.Entity<Blueprint>()
+                .HasMany(x => x.ManufacturingItems)
+                .WithRequired()
+                .HasForeignKey(x => x.BlueprintId);
+            modelBuilder.Entity<Item>()
+                .HasMany(x => x.ManufacturingItems)
+                .WithRequired()
+                .HasForeignKey(x => x.ItemId);
+
+            modelBuilder.Entity<Blueprint>()
+                .HasMany(x => x.ResearchMaterialItems)
+                .WithRequired()
+                .HasForeignKey(x => x.BlueprintId);
+            modelBuilder.Entity<Item>()
+                .HasMany(x => x.ResearchMaterialItems)
+                .WithRequired()
+                .HasForeignKey(x => x.ItemId);
+
+            modelBuilder.Entity<Blueprint>()
+                .HasMany(x => x.ResearchTimeItems)
+                .WithRequired()
+                .HasForeignKey(x => x.BlueprintId);
+            modelBuilder.Entity<Item>()
+                .HasMany(x => x.ResearchTimeItems)
+                .WithRequired()
+                .HasForeignKey(x => x.ItemId);
+
+
+
+
+            modelBuilder.Entity<Blueprint>()
+                .HasMany(x => x.CopyingSkills)
+                .WithRequired()
+                .HasForeignKey(x => x.SkillId);
+            modelBuilder.Entity<Skill>()
+                .HasMany(x => x.CopyingSkills)
+                .WithRequired()
+                .HasForeignKey(x => x.BlueprintId);
+
+            modelBuilder.Entity<Blueprint>()
+                .HasMany(x => x.InventionSkills)
+                .WithRequired()
+                .HasForeignKey(x => x.SkillId);
+            modelBuilder.Entity<Skill>()
+                .HasMany(x => x.InventionSkills)
+                .WithRequired()
+                .HasForeignKey(x => x.BlueprintId);
+
+            modelBuilder.Entity<Blueprint>()
+               .HasMany(x => x.ManufacturingSkills)
+               .WithRequired()
+               .HasForeignKey(x => x.SkillId);
+            modelBuilder.Entity<Skill>()
+                .HasMany(x => x.ManufacturingSkills)
+                .WithRequired()
+                .HasForeignKey(x => x.BlueprintId);
+
+            modelBuilder.Entity<Blueprint>()
+               .HasMany(x => x.ResearchMaterialSkills)
+               .WithRequired()
+               .HasForeignKey(x => x.SkillId);
+            modelBuilder.Entity<Skill>()
+                .HasMany(x => x.ResearchMaterialSkills)
+                .WithRequired()
+                .HasForeignKey(x => x.BlueprintId);
+
+            modelBuilder.Entity<Blueprint>()
+               .HasMany(x => x.ResearchTimeSkills)
+               .WithRequired()
+               .HasForeignKey(x => x.SkillId);
+            modelBuilder.Entity<Skill>()
+                .HasMany(x => x.ResearchTimeSkills)
+                .WithRequired()
+                .HasForeignKey(x => x.BlueprintId);
+
 
 
         }

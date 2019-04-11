@@ -11,7 +11,7 @@ namespace EveIndustry.Data
 
         public int CopyingTime { get; set; }
         public List<CopyingItemsList> CopyingItems { get; set; }
-        public List<CopyingSkillList> CopyingSkill { get; set; }
+        public List<CopyingSkillList> CopyingSkills { get; set; }
 
         public int InventionTime { get; set; }
         public float InventionProbability { get; set; }

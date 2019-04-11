@@ -121,6 +121,10 @@
     <Compile Include="Forms\_BaseForm.Designer.cs">
       <DependentUpon>_BaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904111249247_Blueprints connections.cs" />
+    <Compile Include="Migrations\201904111249247_Blueprints connections.Designer.cs">
+      <DependentUpon>201904111249247_Blueprints connections.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -141,6 +145,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\_BaseForm.resx">
       <DependentUpon>_BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904111249247_Blueprints connections.resx">
+      <DependentUpon>201904111249247_Blueprints connections.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

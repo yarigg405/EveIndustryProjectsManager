@@ -10,34 +10,48 @@ namespace EveIndustry.Data
         public string BlueprintId { get; set; }
 
         public int CopyingTime { get; set; }
-        public List<CopyingItemsList> CopyingItems { get; set; }
-        public List<CopyingSkillList> CopyingSkills { get; set; }
+        public virtual List<CopyingItemsList> CopyingItems { get; set; }
+        public virtual List<CopyingSkillList> CopyingSkills { get; set; }
 
         public int InventionTime { get; set; }
         public float InventionProbability { get; set; }
         public int InventionQuantity { get; set; }
-        public List<InventionItemsList> InventionItems { get; set; }
-        public List<InventionSkillList> InventionSkills { get; set; }
+        public virtual List<InventionItemsList> InventionItems { get; set; }
+        public virtual List<InventionSkillList> InventionSkills { get; set; }
         public virtual List<Blueprint> InventionBlueprints { get; set; }
         public string ParentBlueprintId { get; set; }
-        public virtual Blueprint ParentBlueprint { get; set; }       
+        public virtual Blueprint ParentBlueprint { get; set; }
 
         public int ManufacturingTime { get; set; }
         public int ManufacturingQuantity { get; set; }
         public string ManufacturingItemId { get; set; }
         public virtual Item ManufacturingItem { get; set; }
-        public List<ManufacturingItemsList> ManufacturingItems { get; set; }
-        public List<ManufacturingSkillList> ManufacturingSkills { get; set; }
-                     
+        public virtual List<ManufacturingItemsList> ManufacturingItems { get; set; }
+        public virtual List<ManufacturingSkillList> ManufacturingSkills { get; set; }
+
         public int ResearchMaterialTime { get; set; }
-        public List<ResearchMaterialItemsList> ResearchMaterialItems { get; set; }
-        public List<ResearchMaterialSkillList> ResearchMaterialSkills { get; set; }
+        public virtual List<ResearchMaterialItemsList> ResearchMaterialItems { get; set; }
+        public virtual List<ResearchMaterialSkillList> ResearchMaterialSkills { get; set; }
 
         public int ResearchTimeTime { get; set; }
-        public List<ResearchTimeItemsList> ResearchTimeItems { get; set; }
-        public List<ResearchTimeSkillList> ResearchTimeSkills { get; set; }
+        public virtual List<ResearchTimeItemsList> ResearchTimeItems { get; set; }
+        public virtual List<ResearchTimeSkillList> ResearchTimeSkills { get; set; }
 
+        public Blueprint()
+        {
+            CopyingItems = new List<CopyingItemsList>();
+            CopyingSkills = new List<CopyingSkillList>();
+            InventionItems = new List<InventionItemsList>();
+            InventionSkills = new List<InventionSkillList>();
+            InventionBlueprints = new List<Blueprint>();
+            ManufacturingItems = new List<ManufacturingItemsList>();
+            ManufacturingSkills = new List<ManufacturingSkillList>();
+            ResearchMaterialItems = new List<ResearchMaterialItemsList>();
+            ResearchMaterialSkills = new List<ResearchMaterialSkillList>();
+            ResearchTimeItems = new List<ResearchTimeItemsList>();
+            ResearchTimeSkills = new List<ResearchTimeSkillList>();
 
+        }
 
     }
 }

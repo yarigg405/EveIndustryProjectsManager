@@ -166,7 +166,7 @@ namespace EveIndustry.Forms
             foreach (var str in input)
             {
                 var name = str[0];
-                Item item = Program.dataBase.Items.FirstOrDefault(x => x.Name == name);
+                Item item = Program.DataBase.Items.FirstOrDefault(x => x.Name == name);
                 if (item != null)
                 {
                     int count = ParseCount(str[1]);

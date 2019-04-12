@@ -28,7 +28,7 @@ namespace EveIndustry.Forms
         {
             projectsDataGridView.Rows.Clear();
 
-            var projects = Program.dataBase.Projects.Where(pr=>pr.Name.Contains(nameFilterTextBox.Text));
+            var projects = Program.DataBase.Projects.Where(pr=>pr.Name.Contains(nameFilterTextBox.Text));
 
             foreach (var proj in projects.ToList())
             {
@@ -110,7 +110,7 @@ namespace EveIndustry.Forms
         private void projectsDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             var id = (int)projectsDataGridView.CurrentRow.Cells["id"].Value;
-            var project = Program.dataBase.Projects.Where(pr => pr.Id == id)
+            var project = Program.DataBase.Projects.Where(pr => pr.Id == id)
                 .Include(pr => pr.ModernisationItems)
                 .Include(pr => pr.ProductionsItems)
                 .Single();
@@ -140,7 +140,7 @@ namespace EveIndustry.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var Orders = Program.dataBase.Orders
+            var Orders = Program.DataBase.Orders
                 .Include(o => o.Item).ToList();
             StringBuilder sb = new StringBuilder();
 
@@ -174,7 +174,7 @@ namespace EveIndustry.Forms
                 {
                     var id = (int)row.Cells["id"].Value;
 
-                    var proj = Program.dataBase.Projects
+                    var proj = Program.DataBase.Projects
                         .Where(p => p.Id == id).FirstOrDefault();
 
                     projectsList.Add(proj);
@@ -242,7 +242,7 @@ namespace EveIndustry.Forms
                 {
                     var id = (int)row.Cells["id"].Value;
 
-                    var proj = Program.dataBase.Projects
+                    var proj = Program.DataBase.Projects
                         .Where(p => p.Id == id).FirstOrDefault();
 
                     forDeleting.Add(proj);
@@ -257,8 +257,8 @@ namespace EveIndustry.Forms
 
             if (result == DialogResult.OK)
             {
-                Program.dataBase.Projects.RemoveRange(forDeleting);
-                Program.dataBase.SaveChanges();
+                Program.DataBase.Projects.RemoveRange(forDeleting);
+                Program.DataBase.SaveChanges();
 
                 RefreshTable();
             }

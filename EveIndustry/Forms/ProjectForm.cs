@@ -153,7 +153,7 @@ namespace EveIndustry.Forms
                 
         private void itemIdTextBox_Leave(object sender, EventArgs e)
         {
-            var item = Program.dataBase.Items.Where(i => i.Id == itemIdTextBox.Text).FirstOrDefault();
+            var item = Program.DataBase.Items.Where(i => i.Id == itemIdTextBox.Text).FirstOrDefault();
             if (item != null)
                 itemNameTextBox.Text = item.Name;
             else
@@ -190,7 +190,7 @@ namespace EveIndustry.Forms
 
                 if (itemStr != "")
                 {
-                    var item = Program.dataBase.Items
+                    var item = Program.DataBase.Items
                         .Where(i => i.Name == itemStr).Single();
                     var items = project.ModernisationItems
                         .Where(i => i.Item == item).SingleOrDefault();
@@ -233,7 +233,7 @@ namespace EveIndustry.Forms
 
                 if (itemStr != "")
                 {
-                    var item = Program.dataBase.Items
+                    var item = Program.DataBase.Items
                         .Where(i => i.Name == itemStr).Single();
                     var items = project.ProductionsItems
                         .Where(i => i.Item == item).SingleOrDefault();
@@ -283,9 +283,9 @@ namespace EveIndustry.Forms
         private void okButton_Click(object sender, EventArgs e)
         {
             if (project.Id < 1)
-                Program.dataBase.Projects.Add(project);
+                Program.DataBase.Projects.Add(project);
 
-            Program.dataBase.SaveChanges();
+            Program.DataBase.SaveChanges();
             DialogResult = DialogResult.OK;
         }
 
@@ -293,7 +293,7 @@ namespace EveIndustry.Forms
         {
             if (project.Id > 0)
             {
-                Program.dataBase.Entry(project).Reload();
+                Program.DataBase.Entry(project).Reload();
             }
             DialogResult = DialogResult.Cancel;
         }       
@@ -301,7 +301,7 @@ namespace EveIndustry.Forms
         private void MenuItemOnClick(object sender, EventArgs eventArgs)
         {
             var target = (ToolStripMenuItem)sender;
-            var item = Program.dataBase.Items.Where(it => it.Id == target.Name).FirstOrDefault();
+            var item = Program.DataBase.Items.Where(it => it.Id == target.Name).FirstOrDefault();
             project.Item = item;
            
             itemIdTextBox.Text = item.Id;
@@ -312,7 +312,7 @@ namespace EveIndustry.Forms
         {
             if (itemNameTextBox.Text.Length > 2)
             {
-                var items = (from t in Program.dataBase.Items
+                var items = (from t in Program.DataBase.Items
                              where t.Name.Contains(itemNameTextBox.Text)
                              select t).Take(10).ToList();
 

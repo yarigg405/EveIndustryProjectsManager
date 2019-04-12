@@ -16,13 +16,13 @@ namespace EveIndustry.Controllers
         {
             var ids = GetItemsIds();
             LoadData(ids);
-            Program.dataBase.SaveChanges();
+            Program.DataBase.SaveChanges();
         }
 
         private List<string> GetItemsIds()
         {
             List<string> itemIds = new List<string>();
-            var projects = Program.dataBase.Projects.ToList();
+            var projects = Program.DataBase.Projects.ToList();
 
             foreach (var proj in projects)
             {
@@ -121,12 +121,12 @@ namespace EveIndustry.Controllers
 
 
 
-                var item = Program.dataBase.Items.FirstOrDefault(i => i.Id == id);
-                var order = Program.dataBase.Orders.FirstOrDefault(o => o.Id == id);
+                var item = Program.DataBase.Items.FirstOrDefault(i => i.Id == id);
+                var order = Program.DataBase.Orders.FirstOrDefault(o => o.Id == id);
                 if (order == null)
                 {
                     order = new Data.Order();
-                    Program.dataBase.Orders.Add(order);                    
+                    Program.DataBase.Orders.Add(order);                    
                 }
 
                 item.Order = order;

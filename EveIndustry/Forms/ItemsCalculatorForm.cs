@@ -142,23 +142,7 @@ namespace EveIndustry.Forms
         //}
 
 
-        private int ParseCount(string str)
-        {
-            while (str.Contains(" "))
-                str = str.Replace(" ", "");
-
-            try
-            {
-                return int.Parse(str);
-            }
-
-            catch
-            {
-                MessageBox.Show("ERROR\n#" + str + "#");
-                return 0;
-            }
-
-        }
+       
 
         private Dictionary<Item, int> GetItemsFromStrings(List<string[]> input)
         {
@@ -169,7 +153,7 @@ namespace EveIndustry.Forms
                 Item item = Program.DataBase.Items.FirstOrDefault(x => x.Name == name);
                 if (item != null)
                 {
-                    int count = ParseCount(str[1]);
+                    int count = Extensions.ParseCount(str[1]);
 
                     if (!result.ContainsKey(item))
                         result.Add(item, count);

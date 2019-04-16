@@ -38,7 +38,25 @@ namespace EveIndustry.Controllers
             return result;
 
         }
-        
+
+        public static int ParseCount(string str)
+        {
+            var regex = new Regex(@"[^\d]");
+            var str1 = regex.Replace(str, "");
+
+            try
+            {
+                return int.Parse(str1);
+            }
+
+            catch
+            {
+               throw new Exception("Parsing error with:\n#" + str1 + "#");                
+            }
+
+        }
+
+
         private static string GetString(string input, string from, string to = "")
         {
             //получить определенный фрагмент из текста по формату "from...to"
@@ -63,6 +81,7 @@ namespace EveIndustry.Controllers
 
             return result;
         }
+
 
 
     }

@@ -90,8 +90,10 @@ namespace EveIndustry.Forms
         {
             var summ = project.GetReadyItemsCost().ToMoney();
 
+            readyItemsPriceLabel.Text =
+                $"Готовое изделие, цена: {project.Item.GetSellPrice().ToMoney()}";
             readyItemsCostLabel.Text =
-               $"Готовые изделия: {summ}";
+               $"Готовое изделие, сумма: {summ}";
         }
 
         private void RefreshProfit()
@@ -150,7 +152,7 @@ namespace EveIndustry.Forms
         {
             project.Name = projectNameTextBox.Text;
         }
-                
+
         private void itemIdTextBox_Leave(object sender, EventArgs e)
         {
             var item = Program.DataBase.Items.Where(i => i.Id == itemIdTextBox.Text).FirstOrDefault();
@@ -296,14 +298,14 @@ namespace EveIndustry.Forms
                 Program.DataBase.Entry(project).Reload();
             }
             DialogResult = DialogResult.Cancel;
-        }       
-                
+        }
+
         private void MenuItemOnClick(object sender, EventArgs eventArgs)
         {
             var target = (ToolStripMenuItem)sender;
             var item = Program.DataBase.Items.Where(it => it.Id == target.Name).FirstOrDefault();
             project.Item = item;
-           
+
             itemIdTextBox.Text = item.Id;
             itemNameTextBox.Text = item.Name;
         }
@@ -328,7 +330,7 @@ namespace EveIndustry.Forms
                         contextItem.Name = item.Id;
                         contextItem.Click += new EventHandler(MenuItemOnClick);
                     }
-                    
+
                     else
                     {
                         contextItem.Text = "... и еще";
@@ -336,7 +338,7 @@ namespace EveIndustry.Forms
                     }
                     searchItemContextMenuStrip.Items.Add(contextItem);
                 }
-                
+
                 searchItemContextMenuStrip.Show(Cursor.Position);
             }
         }

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.projectNameTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -68,6 +68,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.searchItemContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.searchItemButton = new System.Windows.Forms.Button();
+            this.readyItemsPriceLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.readyItemsCountUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modernMaterialsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productMaterialsDataGridView)).BeginInit();
@@ -137,18 +138,18 @@
             // 
             // price
             // 
-            dataGridViewCellStyle13.Format = "N2";
-            dataGridViewCellStyle13.NullValue = null;
-            this.price.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.price.DefaultCellStyle = dataGridViewCellStyle1;
             this.price.HeaderText = "Цена";
             this.price.Name = "price";
             this.price.Width = 70;
             // 
             // summ
             // 
-            dataGridViewCellStyle14.Format = "N2";
-            dataGridViewCellStyle14.NullValue = null;
-            this.summ.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.summ.DefaultCellStyle = dataGridViewCellStyle2;
             this.summ.HeaderText = "Сумма";
             this.summ.Name = "summ";
             this.summ.Width = 70;
@@ -182,18 +183,18 @@
             // 
             // price1
             // 
-            dataGridViewCellStyle15.Format = "N2";
-            dataGridViewCellStyle15.NullValue = null;
-            this.price1.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.price1.DefaultCellStyle = dataGridViewCellStyle3;
             this.price1.HeaderText = "Цена";
             this.price1.Name = "price1";
             this.price1.Width = 70;
             // 
             // summ1
             // 
-            dataGridViewCellStyle16.Format = "N2";
-            dataGridViewCellStyle16.NullValue = null;
-            this.summ1.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.summ1.DefaultCellStyle = dataGridViewCellStyle4;
             this.summ1.HeaderText = "Сумма";
             this.summ1.Name = "summ1";
             this.summ1.Width = 70;
@@ -332,17 +333,17 @@
             // 
             this.readyItemsCostLabel.AutoSize = true;
             this.readyItemsCostLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.readyItemsCostLabel.Location = new System.Drawing.Point(9, 418);
+            this.readyItemsCostLabel.Location = new System.Drawing.Point(9, 430);
             this.readyItemsCostLabel.Name = "readyItemsCostLabel";
-            this.readyItemsCostLabel.Size = new System.Drawing.Size(131, 17);
+            this.readyItemsCostLabel.Size = new System.Drawing.Size(177, 17);
             this.readyItemsCostLabel.TabIndex = 31;
-            this.readyItemsCostLabel.Text = "Готовые изделия: ";
+            this.readyItemsCostLabel.Text = "Готовое изделие, сумма: ";
             // 
             // profitLabel
             // 
             this.profitLabel.AutoSize = true;
             this.profitLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.profitLabel.Location = new System.Drawing.Point(335, 418);
+            this.profitLabel.Location = new System.Drawing.Point(335, 430);
             this.profitLabel.Name = "profitLabel";
             this.profitLabel.Size = new System.Drawing.Size(68, 17);
             this.profitLabel.TabIndex = 32;
@@ -390,11 +391,22 @@
             this.searchItemButton.UseVisualStyleBackColor = true;
             this.searchItemButton.Click += new System.EventHandler(this.searchItemButton_Click);
             // 
+            // readyItemsPriceLabel
+            // 
+            this.readyItemsPriceLabel.AutoSize = true;
+            this.readyItemsPriceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.readyItemsPriceLabel.Location = new System.Drawing.Point(9, 413);
+            this.readyItemsPriceLabel.Name = "readyItemsPriceLabel";
+            this.readyItemsPriceLabel.Size = new System.Drawing.Size(169, 17);
+            this.readyItemsPriceLabel.TabIndex = 37;
+            this.readyItemsPriceLabel.Text = "Готовое изделие, цена: ";
+            // 
             // ProjectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(676, 494);
+            this.Controls.Add(this.readyItemsPriceLabel);
             this.Controls.Add(this.searchItemButton);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.blueprintsCountUpDown);
@@ -471,5 +483,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn summ1;
         private System.Windows.Forms.ContextMenuStrip searchItemContextMenuStrip;
         private System.Windows.Forms.Button searchItemButton;
+        private System.Windows.Forms.Label readyItemsPriceLabel;
     }
 }

@@ -20,7 +20,7 @@ namespace EveIndustry.Data
         public virtual List<ItemsProduction> ProductionsItems { get; set; }
 
         public Project()
-        {            
+        {
             ModernisationItems = new List<ItemsModernisation>();
             ProductionsItems = new List<ItemsProduction>();
         }
@@ -63,10 +63,10 @@ namespace EveIndustry.Data
         {
             return
                 GetReadyItemsCost()
-                - GetProdustionCost()
+                - GetProdustionCost() * BlueprintsCount
                 - GetModernisationCost();
-        }   
-        
+        }
+
 
     }
 }

@@ -22,6 +22,7 @@ namespace EveIndustry
         /// The main entry point for the application.
         /// </summary>
         public static DataBaseContext DataBase;
+        public static Dictionary<int, YamlBlueprint> Blueprints;
         public static string regionId = "10000002"; //id региона для загрузки цен (Jita)
 
         [STAThread]
@@ -38,23 +39,117 @@ namespace EveIndustry
         {
             DataBase = new DataBaseContext();
             // LoadItemsDataBase();
+
+           // DataBase.Projects.RemoveRange(DataBase.Projects);
+           // DataBase.SaveChanges();
             LoadBlueprints();
+
+
+            //foreach (var item in Program.Blueprints.Where(x =>
+            //x.Value.activities.invention != null && (
+            //x.Value.activities.invention.time == 13800 ||
+            //x.Value.activities.invention.time == 30900)))
+            //{
+            //    AddNewProjectFromBlueprint(item.Value, 86400);
+            //}
         }
+
+        private static void AddNewProjectFromBlueprint(YamlBlueprint blueprint, int maxInventionTime)
+        {
+            foreach (var child in blueprint.activities.invention.products)
+            {
+                int inventionRuns = 1 + (int)maxInventionTime / blueprint.activities.invention.time;
+
+                YamlBlueprint childBp = Program.Blueprints[child.typeID];
+                Project proj = new Project();
+                string itemId = childBp.activities.manufacturing.products[0]
+                    .typeID.ToString();
+
+                Item readyItem = Program.DataBase.Items.SingleOrDefault
+                    (x => x.Id == itemId);
+                if (readyItem == null)
+                {
+                    readyItem = new Item { Id = itemId, Name = $"itemId: " + itemId, };
+                    Program.DataBase.Items.Add(readyItem);
+                }
+                proj.Name = readyItem.Name;
+                proj.Item = readyItem;
+
+                if (blueprint.activities.copying.materials != null)
+                    foreach (var copyingItem in blueprint.activities.copying.materials)
+                    {
+                        proj.ModernisationItems.Add(
+                            new ItemsModernisation
+                            {
+                                Item = Program.DataBase.Items.FirstOrDefault(
+                                    x => x.Id == copyingItem.typeID.ToString()),
+                                Count = copyingItem.quantity * inventionRuns,
+                            });
+                    }
+
+                if (blueprint.activities.invention.materials != null)
+                    foreach (var inventionItem in blueprint.activities.invention.materials)
+                    {
+                        proj.ModernisationItems.Add(
+                            new ItemsModernisation
+                            {
+                                Item = Program.DataBase.Items.FirstOrDefault(
+                                    x => x.Id == inventionItem.typeID.ToString()),
+                                Count = inventionItem.quantity * inventionRuns,
+                            });
+                    }
+
+                if (blueprint.activities.manufacturing.materials != null)
+                    foreach (var manufacturingItem in childBp.activities.manufacturing.materials)
+                    {
+                        var production = new ItemsProduction();
+                        var item = Program.DataBase.Items.FirstOrDefault(
+                                    x => x.Id == manufacturingItem.typeID.ToString());
+                        if (item == null)
+                        {
+                            item = new Item
+                            {
+                                Id = manufacturingItem.typeID.ToString(),
+                                Name = "ItemId: " + manufacturingItem.typeID.ToString()
+                            };
+                            DataBase.Items.Add(item);
+                        }
+                        production.Item = item;
+                        int count = manufacturingItem.quantity * childBp.maxProductionLimit;
+                        count = (int)Math.Ceiling(0.98 * count);
+
+                        production.Count = count;
+
+                        proj.ProductionsItems.Add(production);
+
+                    }
+
+                proj.BlueprintsCount = (int)((child.probability + 0.10) * inventionRuns);
+                proj.ItemsCount = childBp.maxProductionLimit;
+
+
+                Program.DataBase.Projects.Add(proj);
+
+                DataBase.SaveChanges();
+            }
+           
+
+        }
+
+
 
         private static void LoadBlueprints()
         {
-            var filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
-                + "\\blueprints.yaml";
+            var filePath = "blueprints.yaml";
 
             var deserializer = new Deserializer();
 
             string text = System.IO.File.ReadAllText(filePath);
             var input = new StringReader(text);
 
-            var blueprintsById = deserializer.Deserialize
+            Blueprints = deserializer.Deserialize
                 <Dictionary<int, YamlBlueprint>>(input);
-
-
+            
             //LoadBlueprintsToDataBase(blueprintsById);
 
         }

@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.nameFilterTextBox = new System.Windows.Forms.TextBox();
             this.addNewMediumProjectButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.reloadPricesButton = new System.Windows.Forms.Button();
@@ -60,8 +62,7 @@
             this.goToPurchasesListButton = new System.Windows.Forms.Button();
             this.fullProfitLabel = new System.Windows.Forms.Label();
             this.fullCostLabel = new System.Windows.Forms.Label();
-            this.nameFilterTextBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.loadBlueprintsButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.projectsDataGridView)).BeginInit();
@@ -87,6 +88,23 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(469, 78);
             this.panel1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(183, 53);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(94, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "фильтр по имени";
+            // 
+            // nameFilterTextBox
+            // 
+            this.nameFilterTextBox.Location = new System.Drawing.Point(3, 50);
+            this.nameFilterTextBox.Name = "nameFilterTextBox";
+            this.nameFilterTextBox.Size = new System.Drawing.Size(174, 20);
+            this.nameFilterTextBox.TabIndex = 5;
+            this.nameFilterTextBox.TextChanged += new System.EventHandler(this.nameFilterTextBox_TextChanged);
             // 
             // addNewMediumProjectButton
             // 
@@ -194,9 +212,9 @@
             // 
             // profit
             // 
-            dataGridViewCellStyle1.Format = "N2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.profit.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.profit.DefaultCellStyle = dataGridViewCellStyle4;
             this.profit.HeaderText = "Profit";
             this.profit.Name = "profit";
             // 
@@ -212,6 +230,7 @@
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.loadBlueprintsButton);
             this.panel3.Controls.Add(this.deleteProjectButton);
             this.panel3.Controls.Add(this.addInProjectListButton);
             this.panel3.Location = new System.Drawing.Point(12, 457);
@@ -290,18 +309,18 @@
             // 
             // ProjectCost
             // 
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.ProjectCost.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = null;
+            this.ProjectCost.DefaultCellStyle = dataGridViewCellStyle5;
             this.ProjectCost.HeaderText = "Затраты";
             this.ProjectCost.Name = "ProjectCost";
             this.ProjectCost.Width = 90;
             // 
             // ProjectProfit
             // 
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.ProjectProfit.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = null;
+            this.ProjectProfit.DefaultCellStyle = dataGridViewCellStyle6;
             this.ProjectProfit.HeaderText = "Профит";
             this.ProjectProfit.Name = "ProjectProfit";
             this.ProjectProfit.Width = 90;
@@ -369,22 +388,15 @@
             this.fullCostLabel.TabIndex = 0;
             this.fullCostLabel.Text = "Общая стоимость: ";
             // 
-            // nameFilterTextBox
+            // loadBlueprintsButton
             // 
-            this.nameFilterTextBox.Location = new System.Drawing.Point(3, 50);
-            this.nameFilterTextBox.Name = "nameFilterTextBox";
-            this.nameFilterTextBox.Size = new System.Drawing.Size(174, 20);
-            this.nameFilterTextBox.TabIndex = 5;
-            this.nameFilterTextBox.TextChanged += new System.EventHandler(this.nameFilterTextBox_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(183, 53);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "фильтр по имени";
+            this.loadBlueprintsButton.Location = new System.Drawing.Point(157, 3);
+            this.loadBlueprintsButton.Name = "loadBlueprintsButton";
+            this.loadBlueprintsButton.Size = new System.Drawing.Size(120, 36);
+            this.loadBlueprintsButton.TabIndex = 6;
+            this.loadBlueprintsButton.Text = "loadBlueprintsButton";
+            this.loadBlueprintsButton.UseVisualStyleBackColor = true;
+            this.loadBlueprintsButton.Click += new System.EventHandler(this.loadBlueprintsButton_Click);
             // 
             // ProjectsAllForm
             // 
@@ -445,5 +457,6 @@
         private System.Windows.Forms.Button deleteProjectButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox nameFilterTextBox;
+        private System.Windows.Forms.Button loadBlueprintsButton;
     }
 }

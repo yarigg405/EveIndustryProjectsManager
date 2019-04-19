@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using EveIndustry.Data;
 using System.Data.Entity;
 using EveIndustry.Controllers;
+using yamldotnet;
 
 
 namespace EveIndustry.Forms
@@ -24,11 +25,11 @@ namespace EveIndustry.Forms
             RefreshTable();
         }
 
-        private void RefreshTable(string filterName ="")
+        private void RefreshTable(string filterName = "")
         {
             projectsDataGridView.Rows.Clear();
 
-            var projects = Program.DataBase.Projects.Where(pr=>pr.Name.Contains(nameFilterTextBox.Text));
+            var projects = Program.DataBase.Projects.Where(pr => pr.Name.Contains(nameFilterTextBox.Text));
 
             foreach (var proj in projects.ToList())
             {
@@ -69,7 +70,7 @@ namespace EveIndustry.Forms
 
             fullCostLabel.Text = "Общая стоимость: " + fullCost.ToMoney();
             fullProfitLabel.Text = "Общий профит: " + fullProfit.ToMoney();
-           
+
         }
 
         private void OpenProject(Project project)
@@ -234,7 +235,7 @@ namespace EveIndustry.Forms
 
         private void deleteProjectButton_Click(object sender, EventArgs e)
         {
-            List<Project> forDeleting = new List<Project>();           
+            List<Project> forDeleting = new List<Project>();
 
             foreach (DataGridViewRow row in projectsDataGridView.Rows)
             {
@@ -270,5 +271,18 @@ namespace EveIndustry.Forms
         {
             RefreshTable();
         }
+
+
+
+
+        private void loadBlueprintsButton_Click(object sender, EventArgs e)
+        {           
+
+            RefreshProjectsList();
+        }
+
+
+        
+
     }
 }

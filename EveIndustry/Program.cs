@@ -40,6 +40,7 @@ namespace EveIndustry
             DataBase = new DataBaseContext();
            // LoadItemsDataBase();
 
+
             DataBase.Projects.RemoveRange(DataBase.Projects);
             DataBase.SaveChanges();
             LoadBlueprints();

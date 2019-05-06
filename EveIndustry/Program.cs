@@ -38,7 +38,7 @@ namespace EveIndustry
         private static void Initialize()
         {
             DataBase = new DataBaseContext();
-           // LoadItemsDataBase(); 
+           // LoadItemsDataBase();  
 
             DataBase.Projects.RemoveRange(DataBase.Projects);
             DataBase.SaveChanges();

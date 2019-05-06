@@ -38,20 +38,20 @@ namespace EveIndustry
         private static void Initialize()
         {
             DataBase = new DataBaseContext();
-            // LoadItemsDataBase();
+           // LoadItemsDataBase();
 
-           // DataBase.Projects.RemoveRange(DataBase.Projects);
-           // DataBase.SaveChanges();
+            DataBase.Projects.RemoveRange(DataBase.Projects);
+            DataBase.SaveChanges();
             LoadBlueprints();
 
 
-            //foreach (var item in Program.Blueprints.Where(x =>
-            //x.Value.activities.invention != null && (
-            //x.Value.activities.invention.time == 13800 ||
-            //x.Value.activities.invention.time == 30900)))
-            //{
-            //    AddNewProjectFromBlueprint(item.Value, 86400);
-            //}
+            foreach (var item in Program.Blueprints.Where(x =>
+            x.Value.activities.invention != null && (
+            x.Value.activities.invention.time == 13800 ||
+            x.Value.activities.invention.time == 30900)))
+            {
+                AddNewProjectFromBlueprint(item.Value, 86400);
+            }
         }
 
         private static void AddNewProjectFromBlueprint(YamlBlueprint blueprint, int maxInventionTime)

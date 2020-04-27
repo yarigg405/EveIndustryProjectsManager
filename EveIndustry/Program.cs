@@ -23,7 +23,7 @@ namespace EveIndustry
         /// </summary>
         public static DataBaseContext DataBase;
         public static Dictionary<int, YamlBlueprint> Blueprints;
-        public static string regionId = "10000002"; //id региона для загрузки цен (Jita)
+        public static string regionId = "10000043"; //id региона для загрузки цен (Amarr)
 
         [STAThread]
         static void Main()
@@ -42,16 +42,16 @@ namespace EveIndustry
 
             //DataBase.Projects.RemoveRange(DataBase.Projects);
             DataBase.SaveChanges();
-            LoadBlueprints();
+            //LoadBlueprints();
 
 
-            foreach (var item in Program.Blueprints.Where(x =>
-            x.Value.activities.invention != null && (
-            x.Value.activities.invention.time == 13800 ||
-            x.Value.activities.invention.time == 30900)))
-            {
-                AddNewProjectFromBlueprint(item.Value, 86400);
-            }
+            //foreach (var item in Program.Blueprints.Where(x =>
+            //x.Value.activities.invention != null && (
+            //x.Value.activities.invention.time == 13800 ||
+            //x.Value.activities.invention.time == 30900)))
+            //{
+            //    AddNewProjectFromBlueprint(item.Value, 86400);
+            //}
         }
 
         private static void AddNewProjectFromBlueprint(YamlBlueprint blueprint, int maxInventionTime)

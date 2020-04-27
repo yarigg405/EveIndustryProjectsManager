@@ -7,13 +7,13 @@ namespace EveIndustry.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Blueprintsconnections : IMigrationMetadata
+    public sealed partial class _01 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Blueprintsconnections));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(_01));
         
         string IMigrationMetadata.Id
         {
-            get { return "201904111249247_Blueprints connections"; }
+            get { return "202004010705229_01"; }
         }
         
         string IMigrationMetadata.Source

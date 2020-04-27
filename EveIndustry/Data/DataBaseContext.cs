@@ -45,7 +45,8 @@ namespace EveIndustry.Data
             modelBuilder.Entity<Item>()
                 .HasMany(i => i.ItemsModernisations)
                 .WithRequired()
-                .HasForeignKey(i => i.ItemId);
+                .HasForeignKey(i => i.ItemId)
+                .WillCascadeOnDelete(false);
 
 
 
@@ -60,12 +61,14 @@ namespace EveIndustry.Data
             modelBuilder.Entity<Item>()
                 .HasMany(i => i.ItemsProductions)
                 .WithRequired()
-                .HasForeignKey(i => i.ItemId);
+                .HasForeignKey(i => i.ItemId)
+                .WillCascadeOnDelete(false);
 
 
             modelBuilder.Entity<Item>()
                 .HasOptional(i => i.Order)
-                .WithRequired(or => or.Item);
+                .WithRequired(or => or.Item)
+                .WillCascadeOnDelete(false);
 
 
 
@@ -118,7 +121,8 @@ namespace EveIndustry.Data
             modelBuilder.Entity<Item>()
                 .HasMany(x => x.ManufacturingItems)
                 .WithRequired()
-                .HasForeignKey(x => x.ItemId);
+                .HasForeignKey(x => x.ItemId)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Blueprint>()
                 .HasMany(x => x.ResearchMaterialItems)
@@ -136,7 +140,8 @@ namespace EveIndustry.Data
             modelBuilder.Entity<Item>()
                 .HasMany(x => x.ResearchTimeItems)
                 .WithRequired()
-                .HasForeignKey(x => x.ItemId);
+                .HasForeignKey(x => x.ItemId)
+                .WillCascadeOnDelete(false);
 
 
 
@@ -144,11 +149,14 @@ namespace EveIndustry.Data
             modelBuilder.Entity<Blueprint>()
                 .HasMany(x => x.CopyingSkills)
                 .WithRequired()
-                .HasForeignKey(x => x.SkillId);
+                .HasForeignKey(x => x.SkillId)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<Skill>()
                 .HasMany(x => x.CopyingSkills)
                 .WithRequired()
-                .HasForeignKey(x => x.BlueprintId);
+                .HasForeignKey(x => x.BlueprintId)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Blueprint>()
                 .HasMany(x => x.InventionSkills)
@@ -157,7 +165,8 @@ namespace EveIndustry.Data
             modelBuilder.Entity<Skill>()
                 .HasMany(x => x.InventionSkills)
                 .WithRequired()
-                .HasForeignKey(x => x.BlueprintId);
+                .HasForeignKey(x => x.BlueprintId)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Blueprint>()
                .HasMany(x => x.ManufacturingSkills)
@@ -166,7 +175,8 @@ namespace EveIndustry.Data
             modelBuilder.Entity<Skill>()
                 .HasMany(x => x.ManufacturingSkills)
                 .WithRequired()
-                .HasForeignKey(x => x.BlueprintId);
+                .HasForeignKey(x => x.BlueprintId)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Blueprint>()
                .HasMany(x => x.ResearchMaterialSkills)
@@ -175,7 +185,8 @@ namespace EveIndustry.Data
             modelBuilder.Entity<Skill>()
                 .HasMany(x => x.ResearchMaterialSkills)
                 .WithRequired()
-                .HasForeignKey(x => x.BlueprintId);
+                .HasForeignKey(x => x.BlueprintId)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Blueprint>()
                .HasMany(x => x.ResearchTimeSkills)
@@ -184,7 +195,8 @@ namespace EveIndustry.Data
             modelBuilder.Entity<Skill>()
                 .HasMany(x => x.ResearchTimeSkills)
                 .WithRequired()
-                .HasForeignKey(x => x.BlueprintId);
+                .HasForeignKey(x => x.BlueprintId)
+                .WillCascadeOnDelete(false);
 
 
 

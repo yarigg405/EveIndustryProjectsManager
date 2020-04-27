@@ -3,7 +3,7 @@ namespace EveIndustry.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Blueprintsconnections : DbMigration
+    public partial class _01 : DbMigration
     {
         public override void Up()
         {
@@ -196,9 +196,9 @@ namespace EveIndustry.Migrations
                     })
                 .PrimaryKey(t => new { t.BlueprintId, t.SkillId })
                 .ForeignKey("dbo.Blueprints", t => t.Blueprint_BlueprintId)
-                .ForeignKey("dbo.Skills", t => t.BlueprintId, cascadeDelete: true)
+                .ForeignKey("dbo.Skills", t => t.BlueprintId)
                 .ForeignKey("dbo.Skills", t => t.SkillId, cascadeDelete: true)
-                .ForeignKey("dbo.Blueprints", t => t.SkillId, cascadeDelete: true)
+                .ForeignKey("dbo.Blueprints", t => t.SkillId)
                 .Index(t => t.BlueprintId)
                 .Index(t => t.SkillId)
                 .Index(t => t.Blueprint_BlueprintId);
@@ -224,7 +224,7 @@ namespace EveIndustry.Migrations
                 .PrimaryKey(t => new { t.BlueprintId, t.SkillId })
                 .ForeignKey("dbo.Blueprints", t => t.Blueprint_BlueprintId)
                 .ForeignKey("dbo.Skills", t => t.SkillId, cascadeDelete: true)
-                .ForeignKey("dbo.Skills", t => t.BlueprintId, cascadeDelete: true)
+                .ForeignKey("dbo.Skills", t => t.BlueprintId)
                 .ForeignKey("dbo.Blueprints", t => t.SkillId, cascadeDelete: true)
                 .Index(t => t.BlueprintId)
                 .Index(t => t.SkillId)
@@ -242,7 +242,7 @@ namespace EveIndustry.Migrations
                 .PrimaryKey(t => new { t.BlueprintId, t.SkillId })
                 .ForeignKey("dbo.Blueprints", t => t.Blueprint_BlueprintId)
                 .ForeignKey("dbo.Skills", t => t.SkillId, cascadeDelete: true)
-                .ForeignKey("dbo.Skills", t => t.BlueprintId, cascadeDelete: true)
+                .ForeignKey("dbo.Skills", t => t.BlueprintId)
                 .ForeignKey("dbo.Blueprints", t => t.SkillId, cascadeDelete: true)
                 .Index(t => t.BlueprintId)
                 .Index(t => t.SkillId)
@@ -260,7 +260,7 @@ namespace EveIndustry.Migrations
                 .PrimaryKey(t => new { t.BlueprintId, t.SkillId })
                 .ForeignKey("dbo.Blueprints", t => t.Blueprint_BlueprintId)
                 .ForeignKey("dbo.Skills", t => t.SkillId, cascadeDelete: true)
-                .ForeignKey("dbo.Skills", t => t.BlueprintId, cascadeDelete: true)
+                .ForeignKey("dbo.Skills", t => t.BlueprintId)
                 .ForeignKey("dbo.Blueprints", t => t.SkillId, cascadeDelete: true)
                 .Index(t => t.BlueprintId)
                 .Index(t => t.SkillId)
@@ -278,7 +278,7 @@ namespace EveIndustry.Migrations
                 .PrimaryKey(t => new { t.BlueprintId, t.SkillId })
                 .ForeignKey("dbo.Blueprints", t => t.Blueprint_BlueprintId)
                 .ForeignKey("dbo.Skills", t => t.SkillId, cascadeDelete: true)
-                .ForeignKey("dbo.Skills", t => t.BlueprintId, cascadeDelete: true)
+                .ForeignKey("dbo.Skills", t => t.BlueprintId)
                 .ForeignKey("dbo.Blueprints", t => t.SkillId, cascadeDelete: true)
                 .Index(t => t.BlueprintId)
                 .Index(t => t.SkillId)
